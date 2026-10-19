@@ -213,6 +213,29 @@ footer.end .serif{font-family:'Noto Serif Display',Georgia,serif;font-style:ital
 
 .top .login{margin-left:auto;font-weight:800;font-size:.82rem;color:var(--ink-1);text-decoration:none;border:2px solid var(--ink-1);border-radius:999px;padding:7px 15px;line-height:1.1;white-space:nowrap}
 .top .login:hover{background:var(--ink-1);color:#fff}
+
+/* Kit di riconoscimento della risorsa (19/10/2026) */
+:root{--pink:#227CC0;--pink-dark:#1B669F;--pink-soft:#E3EEF7;--blue:#CD2471;--blue-soft:#F7E3ED;--fucsia:#227CC0}
+
+.rigatop{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.timbro{font-family:'Gochi Hand',cursive;font-size:1.3rem;line-height:1;color:var(--fucsia);rotate:-4deg;border:2.5px solid var(--fucsia);border-radius:10px;padding:4px 12px 2px;white-space:nowrap;display:inline-block}
+.kit{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:22px}
+.kit .cap{font-family:'Gochi Hand',cursive;font-size:1.2rem;line-height:1.1;color:var(--fucsia);rotate:-2deg;margin-left:6px}
+.kt{position:relative;width:54px;height:54px;border-radius:15px;background:#fff;border:2px solid var(--fucsia);box-shadow:3px 4px 0 var(--fucsia);display:flex;align-items:center;justify-content:center;color:var(--fucsia);flex:none}
+.kt.grande{width:68px;height:68px;border-radius:18px}
+.kt img{width:30px;height:30px;object-fit:contain;display:block}
+.kt.grande img{width:38px;height:38px}
+.kt svg.ic{width:28px;height:28px}
+.kt.grande svg.ic{width:36px;height:36px}
+.kt.scuro{background:#2B2628;border-color:#2B2628}
+.kt.barrato{box-shadow:none;border-color:var(--line,#E4E0D9)}
+.kt.barrato img,.kt.barrato svg.ic{filter:grayscale(1);opacity:.45}
+.kt svg.x{position:absolute;left:6px;top:6px;width:calc(100% - 12px);height:calc(100% - 12px);color:var(--fucsia)}
+.voto87{display:inline-flex;align-items:baseline;gap:2px;border:3px solid var(--fucsia);border-radius:100px;padding:6px 18px;background:#fff;color:var(--fucsia);font-weight:700}
+.voto87 b{font-size:2rem;letter-spacing:-.05em;font-weight:900;color:var(--fucsia)}
+.logo-in{width:20px;height:20px;vertical-align:-4px;margin-right:6px;object-fit:contain;display:inline-block}
+.marchi{font-size:12.5px;color:var(--gray,#665E61);max-width:46em;margin:10px auto 0;line-height:1.45}
+@media(max-width:640px){.kt{width:48px;height:48px}.kt.grande{width:60px;height:60px}.kit{gap:8px}}
 </style>
 <meta name="description" content="Valuta il tuo gancio con un voto basato sul Manuale dei Ganci Unlike, trova la struttura giusta tra le 30 che funzionano e copia il prompt pronto per Claude.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪝</text></svg>">
@@ -227,9 +250,18 @@ footer.end .serif{font-family:'Noto Serif Display',Georgia,serif;font-style:ital
   <div class="who"><strong>UNLIKE ACADEMY</strong> · Laboratorio contenuti</div>
 <a class="login" href="https://club.unlikeacademy.it/sign_in" target="_blank" rel="noopener">Login</a></header>
 
-<span class="eyebrow">#GeneratoreGanci</span>
+<div class="rigatop"><span class="eyebrow">#GeneratoreGanci</span><span class="timbro">GANCIO</span></div>
 <h1>Il tuo <span class="serif">gancio</span> decide se il video viene visto.</h1>
-<p class="lede">I primi 3 secondi valgono più di tutto il resto del contenuto. Qui puoi fare due cose: <b>incollare un gancio e farti dire cosa non va</b> (con un voto vero, basato sul Manuale dei Ganci Unlike), oppure <b>partire da un'idea</b> e trovare la struttura giusta tra le 30 che funzionano. In entrambi i casi ti prepariamo il prompt perfetto da incollare a Claude per la versione finale.</p>
+<p class="lede">I primi 3 secondi valgono più di tutto il resto del contenuto. Qui puoi fare due cose: <b>incollare un gancio e farti dire cosa non va</b> (con un voto vero, basato sul Manuale dei Ganci Unlike), oppure <b>partire da un'idea</b> e trovare la struttura giusta tra le 30 che funzionano. In entrambi i casi ti prepariamo il prompt perfetto da incollare a Claude per la versione finale.</p><!-- kit --><div class="kit"><span class="kt grande"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <circle cx="12" cy="12" r="10" />
+  <line x1="22" x2="18" y1="12" y2="12" />
+  <line x1="6" x2="2" y1="12" y2="12" />
+  <line x1="12" x2="12" y1="6" y2="2" />
+  <line x1="12" x2="12" y1="22" y2="18" />
+</svg></span><span class="kt"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <path d="m3 11 18-5v12L3 14v-3z" />
+  <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
+</svg></span><span class="voto87"><b>87</b>/100</span></div>
 
 <nav class="tabs" role="tablist" aria-label="Modalità">
   <button role="tab" aria-selected="true" data-tab="valuta">Valuta un gancio</button>
