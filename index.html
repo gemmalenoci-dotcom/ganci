@@ -96,9 +96,9 @@
         <h3>Scegli come aprire il video</h3>
         <p class="aiuto" id="a-intro"></p>
         <div class="tabs" id="tabs3">
-          <button type="button" data-t="A" class="on">Formule pronte<small>compili i campi e il gancio si scrive da solo</small></button>
-          <button type="button" data-t="B">Ganci già fatti<small>quelli che abbiamo usato davvero, da adattare</small></button>
-          <button type="button" data-t="C">Chiedi a Claude o ChatGPT<small>10 idee scritte da zero, con un messaggio già pronto</small></button>
+          <button type="button" data-t="A" class="on">Compila una formula<small>scegli una struttura e riempi i campi: il gancio si scrive da solo</small></button>
+          <button type="button" data-t="B">Ispirati a ganci veri<small>quelli che Gemma ha usato davvero: guarda come aprono, poi scrivi il tuo</small></button>
+          <button type="button" data-t="C">Fatti scrivere 10 ganci<small>un messaggio già pronto da incollare in Claude o ChatGPT</small></button>
         </div>
 
         <div class="tp on" id="tpA">
@@ -115,12 +115,13 @@
           </div>
           <div class="grid" id="gridB"></div>
           <p class="hint" id="bn" style="margin-top:12px"></p>
+          <p class="hint"><button class="chip" id="bpiu" type="button">Mostra tutti i ganci</button></p>
         </div>
 
         <div class="tp" id="tpC">
-          <p class="aiuto" style="margin:14px 0 6px">Copi un messaggio che contiene già la tua idea e il nostro metodo. Lo incolli in Claude o in ChatGPT, anche gratuiti, e ti risponde con 10 ganci. Poi scegli i migliori e li incolli nel passo 3 per controllare il voto</p>
+          <p class="aiuto" style="margin:14px 0 6px">Copi un messaggio che contiene già la tua idea e il nostro metodo. Lo incolli in Claude o in ChatGPT, anche gratuiti, e ti risponde con 10 ganci. Poi torna qui e incolla i ganci che ti piacciono: ti dico il voto e come migliorarli</p>
           <div class="chips"><button class="chip on" id="pcorto" type="button">Messaggio corto</button><button class="chip" id="pfull" type="button">Messaggio completo, con più esempi</button></div>
-          <div class="azioni"><button class="btn" type="button" data-cp="gen">Copia il messaggio</button></div>
+          <div class="azioni"><button class="btn" type="button" data-cp="gen">Copia il messaggio</button><button class="btn btn-linea" id="c-ho" type="button">Ho i ganci, controllo il voto</button></div>
         </div>
 
         <div class="azioni">

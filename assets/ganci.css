@@ -157,3 +157,9 @@ details.extra{margin-top:18px;border-top:1px solid var(--line);padding-top:6px}
 details.extra summary{cursor:pointer;font-weight:800;color:var(--ink);padding:10px 0}
 details.extra summary .opt{font-weight:600;color:var(--gray)}
 @media (max-width:720px){.modi{grid-template-columns:1fr}}
+
+.tips{margin:6px 0 0 18px}.tips li{margin:6px 0;font-size:15px}
+.gmod .chip{padding:8px 12px;text-align:left}
+.gmod .chip span{font-size:12.5px;font-weight:600;color:var(--gray)}
+.gmod .chip.on span{color:#fff}
+.cand .grid{margin-top:8px}

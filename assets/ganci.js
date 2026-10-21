@@ -60,7 +60,7 @@ var LEVA_CONS={conoscere:"ctr",fidelizzare:"id",vendere:"pro"};
 
 var SWIPE=["voglio clienti, non follower","so fare benissimo il mio lavoro ma non so raccontarlo","mi visualizzano sempre le solite 30 persone","ho buttato tanti soldi","fuffa","sono ferma da mesi","cambio la bio ogni mese perché non so chi sono online","senza snaturarmi","forse il problema sono io"];
 
-var MODALITA=[
+var MODALITA_ALL=[
  {k:"sint",n:"Riassunto del tema",e:"SOS capelli secchi d'estate"},
  {k:"eti",n:"Titolo breve",e:"SOS capelli secchi"},
  {k:"eq",n:"Problema = soluzione",e:"ESTATE = CAPELLI SECCHI → la soluzione"},
@@ -71,6 +71,11 @@ var MODALITA=[
  {k:"cap",n:"Rimando alla caption",e:"Sei gonfia e non sai la causa? Leggi in caption"}
 ];
 
+var MODALITA=MODALITA_ALL.filter(function(m){return ["sint","dom","kw","pov","eti"].indexOf(m.k)>-1}).map(function(m){
+  var nm={sint:"Riassunto",dom:"Domanda",kw:"Parola chiave e domanda",pov:"Scena",eti:"Titolo"}[m.k];
+  var ex={sint:"Come ho triplicato il fatturato in 6 mesi con tiktok",dom:"Sei sicura che sia il glutine?",kw:"GLUTINE: sei sicura ti gonfi?",pov:"POV: stai mangiando con i pastori in Sardegna",eti:"SOS capelli secchi"}[m.k];
+  return {k:m.k,n:nm,e:ex};
+});
 var SCHERMO=[
  ["Tutti ti dicono di togliere il glutine quando sei gonfia. A volte può essere la soluzione, ma ne sei davvero sicura?","GLUTINE: sei sicura ti gonfi?","Parola chiave più domanda"],
  ["Come ho triplicato il mio fatturato in meno di 6 mesi grazie a tiktok con pochi follower e basse visual","Come ho triplicato il fatturato in 6 mesi con tiktok","Riassunto del tema"],
@@ -128,7 +133,7 @@ var BANCA=[
  {x:"Quel reel da 50.000 views che non ti ha portato un solo cliente?",c:"",l:"Curiosità incompiuta",f:"talking",v:"s",n:"Il ricordo che fa male, la risposta sta nel video"},
  {x:"Hai investito, non ha funzionato, e ti sei convinta che il problema fossi tu",c:"",l:"Identificazione immediata",f:"story",v:"s",n:"Valida la frustrazione, poi toglie la colpa"},
  {x:"Il webinar è gratis. E no, non finisce con lo sconto a scalare di quelli che già conosci",c:"",l:"Controintuitivo",f:"talking",v:"s",n:"Disinnesca la diffidenza prima che nasca"}
-].concat(CATS.map(function(c){return {x:c.e,c:c.n,l:"",f:"talking",v:"s",n:"Dal Manuale dei Ganci"}}));
+].concat(CATS.map(function(c){return {x:c.e,c:c.n,l:"",f:"talking",v:"s",n:"Esempio di formula"}}));
 
 var LIMITS={talking:{max:15,label:"talking head"},story:{max:30,label:"storytelling"},visual:{max:20,label:"confronto visivo o quiz"},broll:{max:15,label:"b-roll"},carosello:{max:12,label:"carosello, prima slide"}};
 var FMT_LAB={talking:"talking head",story:"storytelling",visual:"confronto visivo o quiz",broll:"b-roll, solo testo",carosello:"carosello"};
@@ -136,7 +141,7 @@ var OB_LAB={conoscere:"farsi conoscere",fidelizzare:"fidelizzare",vendere:"vende
 
 /* ==================== STATO ==================== */
 var KEY="ganci-v2";
-var S={modo:"idea",gi:"",idea:"",target:"",obiettivo:"conoscere",pain:"",formato:"talking",t1:"",t2:"",t3:"",t4:"",leva:"",cands:[],full:false,tutte:false};
+var S={focus:"",modo:"idea",gi:"",idea:"",target:"",obiettivo:"conoscere",pain:"",formato:"talking",t1:"",t2:"",t3:"",t4:"",leva:"",cands:[],full:false,tutte:false};
 try{var sv=JSON.parse(localStorage.getItem(KEY)||"null");if(sv&&typeof sv==="object"){for(var k in sv){if(k in S)S[k]=sv[k]}}}catch(e){}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
 function $(id){return document.getElementById(id)}
@@ -159,7 +164,7 @@ function detectLeva(t){
   if(/se sei|se hai|se anche tu|ti è mai capitato|hai mai |pov[:.]|ogni (volta|settimana|giorno)|anche io|te lo dici anche tu|avete presente|hai presente|chi guarda|ti riconosci|te lo sei mai/.test(l))o.push("Identificazione immediata");
   if(/stai perdendo|ti stai perdendo|\bperdi\b|rischi di|sta (letteralmente )?(uccidendo|facendo morire|rovinando)|nel frattempo|se non fai|giorni di sospensione/.test(l))o.push("FOMO");
   if(/come ho |come sono |in \d+ (giorni|ore|mesi|minuti|settimane|anni)|da .{2,25} a .{2,25} in |ti (preparo|costruisco|porto) .{0,30}(in|un)/.test(l))o.push("Promessa specifica");
-  if(/sai perch|sai cosa|sai com|indovina|il motivo per cui|e sai cosa|il segreto|il trucco|che nessuno|\.\.\.$|…$|spoiler/.test(l)||/\?\s*$/.test(t.trim()))o.push("Curiosità incompiuta");
+  if(/sto per |cambierà la vita|ti cambierà|assurd|incredibil|non ci crederai|non ci credo|sai perch|sai cosa|sai com|indovina|il motivo per cui|e sai cosa|il segreto|il trucco|che nessuno|\.\.\.$|…$|spoiler/.test(l)||/\?\s*$/.test(t.trim()))o.push("Curiosità incompiuta");
   return o;
 }
 function detectCat(t){
@@ -186,7 +191,7 @@ function analyze(text,fmt){
   var f=[],t=text.trim(),l=t.toLowerCase(),ws=words(t),n=ws.length,ss=sentences(t),lim=LIMITS[fmt]||LIMITS.talking;
   var aperturaBad=false;
   if(n>lim.max+3){f.push({dim:"len",sev:"bad",title:"Troppo lungo: "+n+" parole, il limite è "+lim.max+" per "+lim.label,detail:"Il limite non è negoziabile. Se non riesci a tagliare senza perdere il senso, scegli una categoria più breve",fix:"Taglia le subordinate in coda e tieni la tensione",fx:function(x){return trimToLimit(x,lim.max)}})}
-  else if(n>lim.max){f.push({dim:"len",sev:"warn",title:"Al limite: "+n+" parole su "+lim.max,detail:"Sei appena oltre. Di solito c'è una parola di contesto o una coda da togliere",fix:"Rileggi l'ultima frase: se spiega quello che hai già detto, taglia",fx:function(x){return trimToLimit(x,lim.max)}})}
+  else if(n>lim.max){f.push({dim:"len",sev:"warn",title:"Al limite: "+n+" parole su "+lim.max,detail:"Sei appena oltre. Di solito c'è una parola di contesto o una coda da togliere",fix:"Rileggi l'ultima frase: se spiega quello che hai già detto, taglia"})}
   var apRe=/^(in questo (video|reel|contenuto|post)|oggi vi parlo|oggi parliamo|oggi vi mostro|oggi voglio parlarvi|ciao ragazz[eai]|ciao a tutt[ei]|buongiorno|benvenut[aei]|ecco \d+ consigli|vi spiego come)/;
   if(apRe.test(l)){aperturaBad=true;f.push({dim:"struct",sev:"bad",title:"Apertura che annuncia il video",detail:"Il gancio non descrive il video: è già il video. Chi scrolla non aspetta la fine dell'annuncio",fix:"Entra direttamente nella tensione",prima:"Vi faccio vedere cosa succede nel ristorante quando cambiamo le foto",dopo:"Stessa pasta, stesso ristorante: una fa venire fame, l'altra no",fx:function(x){var y=x.replace(/^(in questo (video|reel|contenuto|post)|oggi vi parlo di|oggi parliamo di|oggi vi mostro|oggi voglio parlarvi di|ciao ragazz[eai]|ciao a tutt[ei]|buongiorno|benvenut[aei]|vi spiego come)[^.,:!?]*[.,:!?]\s*/i,"");return y.trim()&&y!==x?cap1(y):x}})}
   else if(/^(allora|quindi|dunque|volevo|premesso|piccola premessa)/.test(l)){aperturaBad=true;f.push({dim:"talk",sev:"warn",title:"Parti con una zeppa, non con la tensione",detail:"Le prime 3-5 parole sono le uniche che tutti vedono",fix:"Togli la prima parola o frase e verifica: quasi sempre migliora",fx:function(x){return cap1(x.replace(/^(allora|quindi|dunque|volevo|premesso|piccola premessa)[,:]?\s*/i,""))}})}
@@ -205,14 +210,13 @@ function analyze(text,fmt){
   var leve=detectLeva(t);
   if(!leve.length){f.push({dim:"leva",sev:"warn",title:"Manca un motivo per restare",detail:"Non emerge curiosità, riconoscersi, paura di perdere qualcosa, sorpresa o promessa: rischia di scivolare via nello scroll",fix:"Chiediti qual è il dolore, il sogno o l'obiezione di chi guarda, e parti da lì"})}
   var cat=detectCat(t);
-  if(!cat&&!f.some(function(x){return x.sev==="bad"})){f.push({dim:"struct",sev:"warn",title:"Non somiglia a nessuna formula del Manuale",detail:"Non è vietato, ma è un segnale: le formule validate esistono perché funzionano",fix:"Guarda le formule nel passo 2 e prova a riscriverlo dentro quella più vicina"})}
   if(fmt==="carosello"){f.push({dim:"info",sev:"info",title:"Carosello: scrivi anche la seconda slide",detail:"Instagram a volte fa partire il carosello da lì, quindi la seconda slide deve reggersi da sola",fix:""})}
   /* qualità */
   var ctxw={};[S.target,S.pain,S.idea].join(" ").toLowerCase().split(/[^a-zàèéìòù']+/).forEach(function(w){if(w.length>=5)ctxw[w]=1});
   var ctxHit=Object.keys(ctxw).some(function(w){return l.indexOf(w)>-1});
   var swHit=SWIPE.some(function(s){return l.indexOf(s)>-1});
   var spec=(/\d/.test(t)?4:0)+((ctxHit||swHit)?5:0)+((/\s[A-ZÀ-Ý][a-zà-ÿ]{2,}/.test(t)||/["“«]/.test(t))?3:0);
-  var mark=/\?|\bnon\b|\bmai\b|errore|sbagli|perch[eé]|fuffa|nessuno|\d|se sei|pov|unpopular|colpa|segreto|trucco|scrolla|spoiler|verità|smettila|\bvs\b|davvero/;
+  var mark=/sto per|assurd|incredibil|folle|cambier|shock|mai visto|\?|\bnon\b|\bmai\b|errore|sbagli|perch[eé]|fuffa|nessuno|\d|se sei|pov|unpopular|colpa|segreto|trucco|scrolla|spoiler|verità|smettila|\bvs\b|davvero/;
   var f5=ws.slice(0,5).join(" ").toLowerCase();
   var tens=aperturaBad?0:(mark.test(f5)?10:(mark.test(l)?5:0));
   var levaPts=0;if(leve.length){var lv=null;LEVE.forEach(function(x){if(x.k===S.leva)lv=x});levaPts=(lv&&leve.indexOf(lv.lab)>-1)?10:6;if(!S.leva)levaPts=10}
@@ -235,7 +239,7 @@ function core(full){
   return "IL METODO UNLIKE PER I GANCI (regole da rispettare)\n\n"+
 "1) LE 5 LEVE: curiosità incompiuta (apre un loop, non dà la risposta) · paura di perdere (una perdita concreta, mai urgenza finta) · identificazione immediata (nomina chi guarda con precisione) · controintuitivo (rompe una credenza vera, non clickbait) · promessa specifica con tempo credibile\n"+
 "2) LUNGHEZZA, conta le parole dopo aver scritto: talking head o tutorial MAX 15 parole · storytelling o fidelizzare MAX 25-30 · confronto visivo o quiz MAX 20 · prima slide di un carosello MAX 12\n"+
-"3) LE FORMULE DEL MANUALE (la formula è uno scaffold: riempi i campi, non stravolgere la struttura):\n"+cats+"\n"+
+"3) LE FORMULE UNLIKE (la formula è uno scaffold: riempi i campi, non stravolgere la struttura):\n"+cats+"\n"+
 "4) PAIN POINT E DESIDERIO: il gancio parte dal dolore, dal sogno o dall'obiezione di chi guarda, mai dall'argomento del video\n"+
 "5) PARLATO: leggibile ad alta voce alla prima, mai tre frasi brevissime di fila, dettagli concreti del mestiere\n"+
 "6) LOOP APERTO: la tensione nelle prime 3-5 parole, mai rispondere alla propria domanda\n"+
@@ -260,7 +264,7 @@ function promptGen(){
   return "Sei l'esperto di ganci di Unlike Academy per contenuti video brevi (Instagram e TikTok)\nDevo pubblicare questo contenuto e mi servono i ganci, creati applicando il metodo qui sotto\n\n"+ctxBlock()+"\n\n"+core(S.full)+"\n\nCOSA DEVI FARE\n1. Scrivi in tre righe la tensione centrale dell'idea, il pain point o desiderio più forte e se l'idea regge per chi non conosce chi la pubblica\n2. Dammi 10 opzioni di gancio con almeno 4 leve e 8 formule diverse, almeno 3 coraggiose o polarizzanti e almeno 1 fuori dagli schemi\n3. Per ogni opzione: gancio parlato con il conteggio delle parole (dentro il limite), formula usata, leva, gancio a schermo diverso dal parlato, e una riga su perché ferma lo scroll\n4. Chiudi con i 3 migliori e dimmi quale useresti per prima\n\n"+CHIUSURA;
 }
 function promptFix(c){
-  return "Sei l'esperto di ganci di Unlike Academy per contenuti video brevi (Instagram e TikTok)\nRiscrivi il gancio qui sotto applicando il metodo\n\nGANCIO: \""+c.text+"\"\n"+ctxBlock()+"\n\n"+core(S.full)+"\n\nCOSA DEVI FARE\n1. Diagnosi in una riga: qual è il problema principale\n2. Cinque riscritture: A fix minimo con la stessa struttura · B e C con la formula migliore tra quelle del Manuale · D e E coraggiose (polarizzante, esclusione, iperbole o angolo ribaltato)\n3. Per ognuna: conteggio parole dentro il limite, categoria, leva e gancio a schermo diverso dal parlato\n4. Segna la migliore con una riga sul perché\n\n"+CHIUSURA;
+  return "Sei l'esperto di ganci di Unlike Academy per contenuti video brevi (Instagram e TikTok)\nRiscrivi il gancio qui sotto applicando il metodo\n\nGANCIO: \""+c.text+"\"\n"+ctxBlock()+"\n\n"+core(S.full)+"\n\nCOSA DEVI FARE\n1. Diagnosi in una riga: qual è il problema principale\n2. Cinque riscritture: A fix minimo con la stessa struttura · B e C con la formula migliore tra quelle elencate · D e E coraggiose (polarizzante, esclusione, iperbole o angolo ribaltato)\n3. Per ognuna: conteggio parole dentro il limite, categoria, leva e gancio a schermo diverso dal parlato\n4. Segna la migliore con una riga sul perché\n\n"+CHIUSURA;
 }
 function promptTest(c){
   return "Fai l'avvocato del diavolo sul gancio qui sotto, per un contenuto video breve\n\nGANCIO: \""+c.text+"\"\n"+ctxBlock()+"\n\nRispondi in modo secco\n1. Lo potrebbe dire qualsiasi altra persona del mio settore? Se sì, dove è generico\n2. In quale punto si perde chi non mi conosce\n3. Quali parole suonano scritte o da AI\n4. Una versione più polarizzante: un gancio forte non piace a tutti\n5. Una versione che usa le parole di chi guarda\n\nRegole: conta le parole di ogni versione e rispetta il limite del formato, parlato naturale, nessun trattino lungo, nessuna emoji\n"+CHIUSURA;
@@ -273,6 +277,7 @@ function go(p,noScroll){
   ["p1","p3","p4"].forEach(function(id){$(id).classList.toggle("on",id==="p"+p)});
   var bs=document.querySelectorAll("#passi button");
   for(var j=0;j<bs.length;j++){var n=+bs[j].dataset.p;bs[j].classList.toggle("on",n===p);bs[j].classList.toggle("fatto",n<p)}
+  var sli=document.querySelectorAll("#passi li");if(p===3&&sli[1])sli[1].style.display="";
   if(p===3)renderP3();
   if(p===4)renderCands();
   if(!noScroll){var el=$("strumento");window.scrollTo({top:el.getBoundingClientRect().top+window.pageYOffset-8,behavior:"smooth"})}
@@ -340,8 +345,9 @@ function prefill(name){
   return "";
 }
 function renderP3(){
-  var rec=recCats(),show=S.tutte?CATS:rec.slice(0,6);
-  $("a-intro").textContent=S.tutte?"Tutte le formule del Manuale":"Le formule che funzionano meglio per "+OB_LAB[S.obiettivo];
+  var rec=recCats(),show=S.tutte?CATS.slice():rec.slice(0,6);
+  if(S.focus){var fc=catByName(S.focus);if(fc){show=show.filter(function(x){return x!==fc});show.unshift(fc)}S.focus=""}
+  $("a-intro").textContent=S.tutte?"Tutte le formule":"Le formule che funzionano meglio per "+OB_LAB[S.obiettivo];
   $("piuCat").textContent=S.tutte?"Mostra solo le consigliate":"Mostra tutte le formule";
   var h="";
   show.forEach(function(c){
@@ -386,18 +392,36 @@ function renderBFilters(){
   var h='<option value="">Tutti i tipi</option>';CATS.forEach(function(c){h+='<option value="'+esc(c.n)+'">'+esc(c.pt)+'</option>'});
   $("bcat").innerHTML=h;
 }
+var bTutti=false;
+function relB(g){
+  var ctx=[S.idea,S.target,S.pain].join(" ").toLowerCase().split(/[^a-zàèéìòù']+/).filter(function(w){return w.length>=5});
+  var l=(g.x+" "+g.n).toLowerCase(),s=0;
+  ctx.forEach(function(w){if(l.indexOf(w)>-1)s+=2});
+  var lv=null;LEVE.forEach(function(x){if(x.k===S.leva)lv=x});
+  if(lv&&g.l===lv.lab)s+=2;
+  if(lv&&lv.cats.indexOf(g.c)>-1)s+=1;
+  if(g.v==="v")s+=1;
+  return s;
+}
 function renderB(){
-  var q=$("bq").value.trim().toLowerCase(),cat=$("bcat").value,tp=$("btipo").value,out="",n=0;
-  BANCA.forEach(function(g,i){
+  var q=$("bq").value.trim().toLowerCase(),cat=$("bcat").value,tp=$("btipo").value,out="",n=0,tot=0;
+  var filtrato=!!(q||cat||tp);
+  var list=BANCA.map(function(g,i){return {g:g,i:i,s:relB(g)}}).sort(function(a,b){return b.s-a.s});
+  list.forEach(function(o){
+    var g=o.g,i=o.i;
     if(cat&&g.c!==cat)return;if(tp&&g.v!==tp)return;if(q&&(g.x+" "+g.n+" "+g.c).toLowerCase().indexOf(q)===-1)return;
+    tot++;
+    if(!bTutti&&!filtrato&&n>=12)return;
     n++;
-    out+='<div class="gc"><span class="etich '+(g.v==="v"?"":"sc")+'">'+(g.v==="v"?"Gancio vero":"Esempio di scuola")+'</span><div class="pv" style="border-color:var(--line)">'+esc(g.x)+'</div><div class="ct">'+esc([g.c,g.l].filter(Boolean).join(" · "))+'</div><div class="qu">'+esc(g.n)+'</div><div class="az"><button type="button" class="btn mini" data-b="'+i+'">Adatta</button></div></div>';
+    out+='<div class="gc"><span class="etich '+(g.v==="v"?"":"sc")+'">'+(g.v==="v"?"Gancio vero di Gemma":"Esempio scritto da noi")+'</span><div class="pv" style="border-color:var(--line)">'+esc(g.x)+'</div><div class="ct">'+esc([g.c?(catByName(g.c)||{pt:g.c}).pt:"",g.l].filter(Boolean).join(" · "))+'</div><div class="qu">'+esc(g.n)+'</div><div class="az"><button type="button" class="btn mini" data-b="'+i+'">Parto da questo</button></div></div>';
   });
   $("gridB").innerHTML=out||'<p class="vuoto-msg">Nessun gancio con questi filtri</p>';
-  $("bn").textContent=n+" ganci · «Gancio vero» è un gancio che abbiamo pubblicato, «Esempio di scuola» è scritto per mostrare la struttura";
+  $("bn").textContent=(filtrato||bTutti?tot+" ganci":"I "+n+" più vicini alla tua idea, su "+tot)+" · «Gancio vero» lo ha usato Gemma nei suoi video, «Esempio scritto da noi» mostra la struttura";
+  $("bpiu").style.display=(filtrato||bTutti||tot<=12)?"none":"";
 }
+$("bpiu").addEventListener("click",function(){bTutti=true;renderB()});
 ["bq"].forEach(function(id){$(id).addEventListener("input",renderB)});["bcat","btipo"].forEach(function(id){$(id).addEventListener("change",renderB)});
-$("gridB").addEventListener("click",function(e){var b=e.target.closest("[data-b]");if(!b)return;var g=BANCA[+b.dataset.b];addCand(g.x,g.c);toast("Aggiunto: riscrivilo con le tue parole nel passo 3")});
+$("gridB").addEventListener("click",function(e){var b=e.target.closest("[data-b]");if(!b)return;var g=BANCA[+b.dataset.b];addCand(g.x,g.c);toast("Aggiunto ai tuoi ganci: riscrivilo con le tue parole")});
 /* prompt */
 document.addEventListener("click",function(e){var b=e.target.closest("[data-cp]");if(b&&b.dataset.cp==="gen"){readP1();copyText(promptGen(),"Prompt copiato: incollalo in Claude o ChatGPT")}});
 $("pcorto").addEventListener("click",function(){S.full=false;save();$("pcorto").classList.add("on");$("pfull").classList.remove("on")});
@@ -406,6 +430,7 @@ $("a3").addEventListener("click",function(){
   if(!S.cands.length){toast("Non hai ancora tenuto nessun gancio: scrivine uno tuo qui sotto")}
   if(!S.cands.length)S.cands.push(newCand(""));save();go(4);
 });
+$("c-ho").addEventListener("click",function(){if(!S.cands.length)S.cands.push(newCand(""));save();go(4)});
 $("i3").addEventListener("click",function(){go(1)});
 
 /* ==================== PASSO 4 ==================== */
@@ -422,25 +447,54 @@ function fillCand(c,first){
   var keep=el.querySelector("textarea.gt");
   if(first||!keep){
     el.innerHTML='<div class="top"><div><label class="fl" style="margin-top:0">Il gancio che dirai a voce</label><textarea class="gt" aria-label="Gancio parlato" placeholder="Scrivi o incolla qui il tuo gancio, lo controllo subito">'+esc(c.text)+'</textarea><p class="hint" style="margin-top:6px" data-r="cnt"></p></div><div data-r="voto"></div></div><div data-r="res"></div>'+
-    '<div class="sbh">La scritta sullo schermo</div><p class="hint" style="margin:0 0 8px">È la frase che compare nel video nei primi secondi, per chi guarda senza audio. Circa 10 parole, diversa da quello che dici: lo riassume. Ti propongo una bozza, scegli come vuoi scriverla e rifiniscila</p><div class="testo-row"><div><select class="gm" aria-label="Modalità">'+MODALITA.map(function(m){return '<option value="'+m.k+'"'+(m.k===c.mod?" selected":"")+'>'+esc(m.n+" · «"+m.e+"»")+'</option>'}).join("")+'</select></div><div><input type="text" class="gs" value="'+esc(c.scr)+'" aria-label="Scritta sullo schermo" placeholder="Bozza da rifinire"><p class="hint" style="margin-top:6px" data-r="scnt"></p></div></div>'+
+    '<div class="sbh">La scritta sullo schermo</div><p class="hint" style="margin:0 0 8px">È la frase che compare nel video nei primi secondi, per chi guarda senza audio. Circa 10 parole, diversa da quello che dici: lo riassume. Scegli come vuoi scriverla: ti propongo una bozza, poi rifiniscila</p><div class="chips gmod">'+MODALITA.map(function(m){return '<button type="button" class="chip'+(m.k===c.mod?' on':'')+'" data-mod="'+m.k+'"><b>'+esc(m.n)+'</b><br><span>«'+esc(m.e)+'»</span></button>'}).join("")+'</div><div style="margin-top:10px"><input type="text" class="gs" value="'+esc(c.scr)+'" aria-label="Scritta sullo schermo" placeholder="Bozza da rifinire"><p class="hint" style="margin-top:6px" data-r="scnt"></p></div>'+
     '<div class="azioni no-print"><button class="btn mini" data-a="rev" type="button">Chiedi a Claude di migliorarlo</button><button class="btn mini btn-linea" data-a="test" type="button">Cerca i punti deboli con Claude</button><button class="btn mini btn-linea" data-a="del" type="button">Elimina questo gancio</button></div><p class="hint no-print" style="margin-top:8px">I primi due bottoni copiano un messaggio già pronto: lo incolli in Claude o in ChatGPT e ricevi la risposta</p>';
   }
   updateCand(c);
 }
+function altHtml(c,a){
+  var t=c.text.trim(),tips=[];
+  if(a.spec<8)tips.push("Rendilo più tuo: aggiungi un dettaglio concreto, per esempio un numero, il tuo mestiere o una frase che il tuo pubblico dice davvero");
+  if(a.tens<10)tips.push("Metti la cosa più sorprendente nelle prime 5 parole e lascia il contesto dopo");
+  if(!a.leve.length)tips.push("Scegli perché qualcuno dovrebbe restare: una domanda lasciata aperta, una credenza sbagliata, una promessa concreta");
+  if(a.n>a.lim.max)tips.push("Taglia fino a "+a.lim.max+" parole: togli le spiegazioni in coda");
+  if(!tips.length)tips.push("Ottimo. Ora leggilo ad alta voce, se suona scritto riscrivilo, e prova anche una versione più coraggiosa");
+  var h='<div class="sbh">Cosa fare adesso</div><ul class="tips">'+tips.map(function(x){return '<li>'+esc(x)+'</li>'}).join("")+'</ul>';
+  /* formule da provare */
+  var lv=null;LEVE.forEach(function(x){if(a.leve.length&&x.lab===a.leve[0])lv=x});
+  var pool=lv?CATS.filter(function(x){return lv.cats.indexOf(x.n)>-1}):recCats();
+  pool=pool.filter(function(x){return x.n!==a.cat&&x.g.indexOf(S.obiettivo)>-1});
+  if(pool.length<3)pool=pool.concat(recCats().filter(function(x){return x.n!==a.cat&&pool.indexOf(x)===-1}));
+  pool=pool.slice(0,3);
+  if(pool.length){
+    h+='<div class="sbh">Prova a riscriverlo con una di queste formule</div><div class="grid">';
+    pool.forEach(function(x){h+='<div class="gc"><span class="nm">'+esc(x.pt)+'</span><div class="fm">'+esc(x.f).replace(/\[(.*?)\]/g,"<em>[$1]</em>")+'</div><div class="es">Es: '+esc(x.e)+'</div><div class="az no-print"><button type="button" class="btn mini" data-a="fm" data-n="'+esc(x.n)+'">Prova questa formula</button></div></div>'});
+    h+='</div>';
+  }
+  /* ganci veri simili */
+  var tw=t.toLowerCase().split(/[^a-zàèéìòù']+/).filter(function(w){return w.length>=5});
+  var sim=BANCA.map(function(g,i){var s=0,l=g.x.toLowerCase();tw.forEach(function(w){if(l.indexOf(w)>-1)s+=2});if(a.leve.length&&g.l===a.leve[0])s+=3;if(a.cat&&g.c===a.cat)s+=2;if(g.v==="v")s+=1;return {g:g,i:i,s:s}}).filter(function(o){return o.g.x.toLowerCase()!==t.toLowerCase()&&o.s>1}).sort(function(x,y){return y.s-x.s}).slice(0,3);
+  if(sim.length){
+    h+='<div class="sbh">Ganci veri che usano la stessa leva, per ispirarti</div><div class="grid">';
+    sim.forEach(function(o){h+='<div class="gc"><span class="etich '+(o.g.v==="v"?"":"sc")+'">'+(o.g.v==="v"?"Gancio vero di Gemma":"Esempio scritto da noi")+'</span><div class="pv" style="border-color:var(--line)">'+esc(o.g.x)+'</div><div class="qu">'+esc(o.g.n)+'</div><div class="az no-print"><button type="button" class="btn mini" data-a="addb" data-i="'+o.i+'">Parto da questo</button></div></div>'});
+    h+='</div>';
+  }
+  return h;
+}
 function scrDraft(c){
   var base=(S.idea||c.text).trim(),w=words(base),pn=words(S.pain.split(" · ")[0]||""),m=c.mod,t=c.text.trim();
-  var q=(t.match(/[^.!?]*\?/)||[""])[0].trim();
+  var q=(t.match(/[^.!?]*\?/)||[""])[0].trim();var fs=(sentences(t)[0]||t).replace(/[.,!?…]+$/,"");
   var first=function(a,n){var r=a.slice(0,n);while(r.length>3&&/^(in|di|a|da|il|la|le|lo|i|gli|un|una|uno|e|che|per|con|del|della|dei|delle|al|nel|sul|perché|se|ma|o)$/i.test(r[r.length-1]))r.pop();return r.join(" ")};
   var kw=(words((S.target||S.idea||t)).filter(function(x){return x.length>=5})[0]||"TEMA").toUpperCase().replace(/[^A-ZÀ-Ý0-9]/g,"");
   switch(m){
     case "sint":return cap1(first(w,9));
     case "eti":return first(w,4).toUpperCase();
     case "eq":return (pn.length?first(pn,3).toUpperCase():"IL PROBLEMA")+" = "+"LA SOLUZIONE";
-    case "dom":return q?first(words(q),12):first(words(t),8).replace(/[.,!?]+$/,"")+"?";
-    case "kw":return kw+": "+(q?first(words(q),8):"sei sicura che sia così?");
+    case "dom":return q?first(words(q),12):first(words(fs),10)+"?";
+    case "kw":return kw+": "+(q?first(words(q),8):first(words(fs),6).toLowerCase()+"?");
     case "ann":return "Come "+first(w,7).toLowerCase();
     case "pov":return "POV: "+(pn.length?first(pn,8):first(w,8)).toLowerCase();
-    case "cap":return first(words(t),8).replace(/[.,!?]+$/,"")+"? Leggi in caption";
+    case "cap":return first(words(fs),8)+"? Leggi in caption";
   }
   return "";
 }
@@ -473,6 +527,7 @@ function updateCand(c){
     });
     if(fx.length>1)h+='<div class="azioni no-print"><button class="btn mini" data-a="fixall" type="button">Applica tutte le correzioni</button></div>';
   }else{h+='<p class="nota-ok">I controlli non trovano problemi. Ultimo test, quello vero: leggilo ad alta voce, se suona scritto riscrivilo</p>'}
+  h+=altHtml(c,a);
   rs.innerHTML=h;rs._a=a;
   if(!c.scr){c.scr=scrDraft(c)}
   var si=el.querySelector(".gs");if(si&&document.activeElement!==si){si.value=c.scr}
@@ -483,12 +538,13 @@ $("cands").addEventListener("input",function(e){
   if(e.target.classList.contains("gt")){c.text=e.target.value;save();updateCand(c);renderConfronto();renderFinale()}
   else if(e.target.classList.contains("gs")){c.scr=e.target.value;save();el.querySelector('[data-r=scnt]').textContent=(c.scr?words(c.scr).length+" parole":"");renderFinale()}
 });
-$("cands").addEventListener("change",function(e){
-  var el=e.target.closest(".cand");if(!el)return;var c=candById(el.dataset.id);
-  if(e.target.classList.contains("gm")){c.mod=e.target.value;c.scr=scrDraft(c);save();el.querySelector(".gs").value=c.scr;updateCand(c);renderFinale()}
-});
+
 $("cands").addEventListener("click",function(e){
+  var mb=e.target.closest("[data-mod]");
+  if(mb){var el0=mb.closest(".cand"),c0=candById(el0.dataset.id);c0.mod=mb.dataset.mod;c0.scr=scrDraft(c0);save();el0.querySelectorAll("[data-mod]").forEach(function(x){x.classList.toggle("on",x===mb)});el0.querySelector(".gs").value=c0.scr;el0.querySelector('[data-r=scnt]').textContent=words(c0.scr).length+" parole";renderFinale();return}
   var b=e.target.closest("[data-a]");if(!b)return;var el=b.closest(".cand"),c=candById(el.dataset.id),a=b.dataset.a;
+  if(a==="fm"){S.focus=b.dataset.n;save();go(3);document.querySelector('#tabs3 [data-t=A]').click();return}
+  if(a==="addb"){var gg=BANCA[+b.dataset.i];S.cands.push(newCand(gg.x,gg.c));save();renderCands();toast("Aggiunto: riscrivilo con le tue parole");return}
   if(a==="fix"){var f=el.querySelector('[data-r=res]')._a.f[+b.dataset.i];var nv=f.fx(c.text.trim());c.text=nv;el.querySelector("textarea.gt").value=nv;save();updateCand(c);renderConfronto();renderFinale();toast("Correzione applicata")}
   else if(a==="fixall"){var t=c.text.trim(),n=0;for(var k=0;k<5;k++){var an=analyze(t,S.formato);var f2=an.f.filter(function(x){return x.fx&&x.fx(t).trim()&&x.fx(t)!==t})[0];if(!f2)break;t=f2.fx(t);n++}c.text=t;el.querySelector("textarea.gt").value=t;save();updateCand(c);renderConfronto();renderFinale();toast(n+" correzioni applicate")}
   else if(a==="rev"){copyText(promptFix(c),"Prompt copiato: incollalo in Claude o ChatGPT")}
@@ -524,13 +580,12 @@ function renderFinale(){
   var has=S.cands.some(function(c){return c.text.trim()});
   if(!has){box.style.display="none";return}
   box.style.display="";
-  box.innerHTML='<h3>La tua scheda</h3><p class="aiuto">Copia la scheda, stampala o portala in Stratego. I tuoi ganci restano solo in questo browser</p><div class="azioni"><button class="btn sm" id="f-copia" type="button">Copia la scheda</button><button class="btn sm btn-linea" id="f-stampa" type="button">Stampa</button><button class="btn sm btn-linea" id="f-str" type="button">Porta questa scheda in Stratego</button><button class="btn sm btn-linea" id="f-svuota" type="button">Svuota i miei ganci</button></div><p class="hint" style="margin-top:12px"><b>Leggilo ad alta voce:</b> se suona scritto, riscrivilo</p>';
+  box.innerHTML='<h3>La tua scheda</h3><p class="aiuto">Copia la scheda o stampala. I tuoi ganci restano solo in questo browser</p><div class="azioni"><button class="btn sm" id="f-copia" type="button">Copia la scheda</button><button class="btn sm btn-linea" id="f-stampa" type="button">Stampa</button><button class="btn sm btn-linea" id="f-svuota" type="button">Svuota i miei ganci</button></div><p class="hint" style="margin-top:12px"><b>Leggilo ad alta voce:</b> se suona scritto, riscrivilo</p>';
 }
 $("finale").addEventListener("click",function(e){
   var id=e.target.id;
   if(id==="f-copia")copyText(schedaTxt(),"Scheda copiata");
   else if(id==="f-stampa")window.print();
-  else if(id==="f-str"){copyText("Ciao Stratego, parto da questa scheda dei miei ganci. Aiutami a costruire strategia e piano partendo da qui\n\n"+schedaTxt(),"Scheda copiata: incollala in Stratego");window.open("https://stratego.social/?utm_source=ganci&utm_medium=scheda&utm_campaign=ganci","_blank","noopener")}
   else if(id==="f-svuota"){if(confirm("Svuoto tutti i tuoi ganci e i campi?")){S.cands=[];S.idea=S.target=S.pain=S.t1=S.t2=S.t3=S.t4="";S.leva="";save();fillP1();renderCands();toast("Svuotato");go(1)}}
 });
 
@@ -540,7 +595,7 @@ $("finale").addEventListener("click",function(e){
   Object.keys(g).forEach(function(k){h+='<h4 style="margin-top:14px">'+esc(k)+'</h4><ul>';g[k].forEach(function(c){h+='<li><b>'+esc(c.pt)+'</b> · '+esc(c.f)+'<br><span class="ex">Es: '+esc(c.e)+'</span><br><span class="hint">Quando: '+esc(c.q)+'</span></li>'});h+='</ul>'});
   $("cat-list").innerHTML=h;
   $("tab-schermo").innerHTML='<thead><tr><th>A voce</th><th>Sullo schermo</th><th>Come è scritta</th></tr></thead><tbody>'+SCHERMO.map(function(r){return '<tr><td>'+esc(r[0])+'</td><td><b>'+esc(r[1])+'</b></td><td>'+esc(r[2])+'</td></tr>'}).join('')+'</tbody>';
-  $("mod-list").innerHTML=MODALITA.map(function(m){return '<li><b>'+esc(m.n)+'</b> · '+esc(m.e)+'</li>'}).join("");
+  $("mod-list").innerHTML=MODALITA_ALL.map(function(m){return '<li><b>'+esc(m.n)+'</b> · '+esc(m.e)+'</li>'}).join("");
   $("aff-list").innerHTML=AFF.map(function(a){return '<li><b>'+esc(a[0])+'</b> · '+esc(a[1])+'</li>'}).join("");
 })();
 
