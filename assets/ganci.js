@@ -101,40 +101,6 @@ var AFF=[
  ["Rispondi alla domanda del cliente, non alla tua","«Cosa ti porti dietro da una consulenza d'immagine?» e non «Cosa fa una consulente d'immagine?»"]
 ];
 
-/* Banca: v = gancio vero (dai contenuti di Unlike Academy, testo come pubblicato), s = esempio di scuola */
-var BANCA=[
- {x:"Ma siamo davvero sicuri che la nuova funzione sulle storie sia positiva al cento per cento?",c:"",l:"Controintuitivo",f:"talking",v:"v",n:"Domanda che incrina l'entusiasmo di tutti"},
- {x:"Vuoi crescere su TikTok nel 2026? INIZIA A FARE LE LIVE!!",c:"",l:"Promessa specifica",f:"talking",v:"v",n:"Domanda al target e comando secco"},
- {x:"30 giorni di sospensione da Instagram se non rispetti le nuove regole dei Trial Reels",c:"",l:"FOMO",f:"talking",v:"v",n:"Paura più numero concreto"},
- {x:"Mi hanno dato della fuffa guru. E sapete che cosa ci ho fatto? Ci ho creato un format, anzi due",c:"CLIFFHANGER PERSONALE",l:"Curiosità incompiuta",f:"story",v:"v",n:"Scena vissuta con ribaltamento"},
- {x:"Come fare i soldi sui social in poco tempo a partire da domani? Spoiler: non è possibile",c:"PIVOT NARRATIVO",l:"Controintuitivo",f:"talking",v:"v",n:"Domanda e spoiler onesto, in linea con l'antifuffa"},
- {x:"Ho ricevuto due feedback negativi da parte di persone che hanno acquistato i miei prodotti, e no, non me ne vergogno",c:"",l:"Curiosità incompiuta",f:"story",v:"v",n:"Vulnerabilità e ribaltamento"},
- {x:"Se tu vai in palestra e non ottieni risultati, vai a denunciare la palestra o dai la colpa a te stesso?",c:"",l:"Controintuitivo",f:"talking",v:"v",n:"Analogia che porta a una colpa ribaltata"},
- {x:"Vuoi i follower? Rispondi a questa domanda: perché dovrei seguirti?",c:"",l:"Identificazione immediata",f:"talking",v:"v",n:"Domanda specchio"},
- {x:"Se i tuoi social non funzionano è perché non ci credi davvero",c:"OPINIONE SCOMODA",l:"Controintuitivo",f:"talking",v:"v",n:"Tesi netta, poi si smonta il luogo comune dell'algoritmo"},
- {x:"L'altro giorno in live uno mi ha scritto: «Insegni social media marketing e poi hai tre commenti su TikTok»",c:"CLIFFHANGER PERSONALE",l:"Curiosità incompiuta",f:"story",v:"v",n:"Commento ricevuto in live, citato alla lettera"},
- {x:"Devi creare più contenuti di quelli che consumi",c:"RIPETIZIONE RITMICA",l:"Controintuitivo",f:"talking",v:"v",n:"Ripetuta tre volte a schermo, il ritmo fa il gancio"},
- {x:"«Gemma ma io non ho mai idea di cosa postare». Smettila di cercare idee di contenuto nella tua testa. Inizia a parlare con il tuo pubblico",c:"",l:"Identificazione immediata",f:"talking",v:"v",n:"Obiezione del target citata, poi risposta"},
- {x:"Blocco creativo in estate? Questo succede perché ti stai limitando",c:"",l:"Identificazione immediata",f:"talking",v:"v",n:"Diagnosi e colpa ribaltata"},
- {x:"«No grazie, non lo compro perché costa troppo». Te lo sei mai sentito dire?",c:"DOMANDA DI IDENTIFICAZIONE",l:"Identificazione immediata",f:"talking",v:"v",n:"Obiezione del cliente recitata"},
- {x:"«Non ti riesco a trovare! Non ti riesco a vedere! Non mi appari mai nei Per Te»",c:"",l:"Identificazione immediata",f:"talking",v:"v",n:"Frase del pubblico recitata: chi la dice si riconosce subito"},
- {x:"Perché la challenge «Indovina l'oggetto» sta facendo fare milioni di views ai creator?",c:"",l:"Curiosità incompiuta",f:"talking",v:"v",n:"Domanda sul perché di un fenomeno"},
- {x:"Ma come fa Piero Armenti a fare milioni di visualizzazioni, con i testi storti, senza editing, e video girati così?",c:"",l:"Controintuitivo",f:"talking",v:"v",n:"Paradosso: tutto sembra sbagliato eppure funziona"},
- {x:"«Gemma, ma quando inizi a fare qualcosa di serio?» Queste sono le parole che mi disse il mio professore di architettura, quattro anni fa",c:"STORIA PERSONALE",l:"Curiosità incompiuta",f:"story",v:"v",n:"Citazione e ferita"},
- {x:"Avete presente quelle che sono sempre curate e voi non capite come fanno? Vi svelo il loro segreto",c:"STUPORE + COMMUNITY",l:"Identificazione immediata",f:"talking",v:"v",n:"Parla a un'esperienza che il target condivide e promette il segreto"},
- {x:"Il tuo armadio è pieno e non hai niente da metterti? Ti spiego perché",c:"",l:"Identificazione immediata",f:"talking",v:"v",n:"Domanda su un dolore reale, per chi si riconosce"},
- {x:"Cerchi qualcuno che ti aiuti a valorizzare il tuo corpo ma non sei pronta a sentirti dire che non stai bene con tutto? Allora non sono la professionista giusta per te",c:"DI ESCLUSIONE",l:"Controintuitivo",f:"story",v:"v",n:"Filtra chi guarda e posiziona con forza"},
- {x:"Ma cosa fa una consulente d'immagine? Vi porto con me dentro una consulenza",c:"",l:"Curiosità incompiuta",f:"talking",v:"v",n:"Versione più forte: «Cosa ti porti dietro da una consulenza d'immagine?»"},
- {x:"Siamo nell'epoca del tutto e subito",c:"",l:"Identificazione immediata",f:"story",v:"v",n:"Diagnosi culturale, poi si va al caso"},
- {x:"Le views misurano la curiosità, non l'intenzione",c:"OPINIONE SCOMODA",l:"Controintuitivo",f:"talking",v:"s",n:"Scritta per mostrare la struttura"},
- {x:"«Voglio clienti, non follower» me lo dite tutte. Poi aprite ChatGPT e gli chiedete il post più virale possibile. Vedi il problema?",c:"",l:"Controintuitivo",f:"talking",v:"s",n:"Parole vere del target e pensiero a voce alta"},
- {x:"So fare benissimo il mio lavoro, ma non so raccontarlo. Te lo dici anche tu?",c:"DOMANDA DI IDENTIFICAZIONE",l:"Identificazione immediata",f:"talking",v:"s",n:"Effetto «anche io» con le parole del target"},
- {x:"Mi visualizzano sempre le solite 30 persone",c:"",l:"Identificazione immediata",f:"talking",v:"s",n:"Specificità: il numero e il vissuto"},
- {x:"Quel reel da 50.000 views che non ti ha portato un solo cliente?",c:"",l:"Curiosità incompiuta",f:"talking",v:"s",n:"Il ricordo che fa male, la risposta sta nel video"},
- {x:"Hai investito, non ha funzionato, e ti sei convinta che il problema fossi tu",c:"",l:"Identificazione immediata",f:"story",v:"s",n:"Valida la frustrazione, poi toglie la colpa"},
- {x:"Il webinar è gratis. E no, non finisce con lo sconto a scalare di quelli che già conosci",c:"",l:"Controintuitivo",f:"talking",v:"s",n:"Disinnesca la diffidenza prima che nasca"}
-].concat(CATS.map(function(c){return {x:c.e,c:c.n,l:"",f:"talking",v:"s",n:"Esempio di formula"}}));
-
 var LIMITS={talking:{max:15,label:"talking head"},story:{max:30,label:"storytelling"},visual:{max:20,label:"confronto visivo o quiz"},broll:{max:15,label:"b-roll"},carosello:{max:12,label:"carosello, prima slide"}};
 var FMT_LAB={talking:"talking head",story:"storytelling",visual:"confronto visivo o quiz",broll:"b-roll, solo testo",carosello:"carosello"};
 var OB_LAB={conoscere:"farsi conoscere",fidelizzare:"fidelizzare",vendere:"vendere"};
@@ -222,13 +188,15 @@ function analyze(text,fmt){
   var levaPts=0;if(leve.length){var lv=null;LEVE.forEach(function(x){if(x.k===S.leva)lv=x});levaPts=(lv&&leve.indexOf(lv.lab)>-1)?10:6;if(!S.leva)levaPts=10}
   var bad=0,warn=0,tb=0,tw=0;
   f.forEach(function(x){if(x.dim==="talk"){if(x.sev==="bad")tb++;else tw++}else if(x.dim!=="leva"&&x.dim!=="info"){if(x.sev==="bad")bad++;else warn++}});
-  var rules=Math.max(0,60-bad*16-warn*7);
+  var rules=Math.max(0,60-bad*12-warn*5);
   var parl=Math.max(0,8-tb*4-tw*2);
   var total=rules+spec+tens+levaPts+parl;
+  var badN0=f.filter(function(x){return x.sev==="bad"}).length;
+  if(!badN0)total+=(levaPts>0?5:0)+(tens>=5?5:0);
   var badAll=f.filter(function(x){return x.sev==="bad"}).length;
   var verd,vc;
-  if(badAll>=2||total<55){verd="Da rifare";vc="bad"}else if(total<78||badAll===1){verd="Quasi, rifinisci";vc="warn"}else{verd="Pronto da provare";vc="ok"}
-  return {f:f,n:n,lim:lim,leve:leve,cat:cat,total:Math.min(100,total),rules:rules,spec:spec,tens:tens,leva:levaPts,parl:parl,verd:verd,vc:vc};
+  if(badAll>=2||total<50){verd="Da rifare";vc="bad"}else if(total<72||badAll===1){verd="Quasi, rifinisci";vc="warn"}else{verd="Pronto da provare";vc="ok"}
+  return {f:f,n:n,lim:lim,leve:leve,cat:cat,total:Math.min(97,total),rules:rules,spec:spec,tens:tens,leva:levaPts,parl:parl,verd:verd,vc:vc};
 }
 var DIMS={leva:"Perché guardare",struct:"Forma",len:"Lunghezza",talk:"Suona parlato",loop:"Curiosità aperta"};
 function dimSev(f,d){var s="ok";f.forEach(function(x){if(x.dim===d){if(x.sev==="bad")s="bad";else if(x.sev==="warn"&&s!=="bad")s="warn"}});return s}
@@ -328,6 +296,147 @@ $("vai-idea").addEventListener("click",function(){go(1);setTimeout(function(){$(
 ["idea","target","pain","gi"].forEach(function(id){$(id).addEventListener("input",function(){readP1()})});
 ["obiettivo","formato"].forEach(function(id){$(id).addEventListener("change",function(){readP1()})});
 
+
+/* ==================== PROPOSTE AUTOMATICHE ==================== */
+function lc1(s){return /^[A-ZÀ-Ý]{2,}/.test(s)?s:s.charAt(0).toLowerCase()+s.slice(1)}
+function cleanIdea(idea){
+  var s=idea.trim().replace(/[.!?…]+$/,""),prev;
+  var lead=/^(in questo video|oggi|vorrei|voglio|devo|dovrei|ti|vi|ci|faccio vedere|faccio|spiego|spieghiamo|mostro|mostriamo|racconto|raccontiamo|parlo|parliamo|dico|svelo|insegno|un video|video|un reel|reel|un carosello|carosello|un post|post)\b[\s,:]*/i;
+  do{prev=s;s=s.replace(lead,"")}while(s!==prev&&s);
+  var kind="topic";
+  var m0=s.match(/^(in cui|su|sul|sulla|sulle|sui|degli|delle|dello|del|della|di|a|che)\s+(?=\S)/i);
+  if(m0){if(/^che$/i.test(m0[1]))kind="clause";s=s.slice(m0[0].length)}
+  var m=s.match(/^(perch[eé]|come|cosa|quanto|quali|quando)\s+(.+)$/i);
+  if(m){var w=m[1].toLowerCase();if(w.indexOf("perch")===0){kind="why";s=m[2]}else if(w==="come"){kind="how";s=m[2]}}
+  var ws=s.split(/\s+/);
+  if(ws.length>11){
+    var cut=s.search(/,| e | ma | perché /i);
+    if(cut>12&&s.slice(0,cut).split(/\s+/).length<=11)s=s.slice(0,cut);
+    else s=ws.slice(0,10).join(" ");
+  }
+  s=s.replace(/[,;:\s]+$/,"");
+  var first=s.split(/\s+/)[0]||"";
+  var inf=/^[a-zàèéìòù]+(are|ere|ire|arsi|ersi|irsi|rre)$/i.test(first);
+  return {kind:kind,core:lc1(s),inf:inf};
+}
+function mk(l,t){return {l:l,t:t}}
+function candidatesFromIdea(){
+  var ci=cleanIdea(S.idea||""),core=ci.core,o=[];
+  if(core){
+    var fpc=/^(ho |sono |ero |sto |mi |faccio |vado |ieri|ogni |quando |stamattina)/i.test(core);
+    if(fpc){
+      o.push(mk("Storia",cap1(core)+"... e sai cosa è successo dopo?"));
+      o.push(mk("Curiosità","Non ci crederai: "+core));
+      o.push(mk("Storia",cap1(core)+". E non è finita qui"));
+      o.push(mk("Ti riconosci","Te lo sei mai chiesto? "+cap1(core)));
+    }else if(ci.kind==="why"||ci.kind==="clause"){
+      if(ci.kind==="why")o.push(mk("Curiosità","Sai perché "+core+"?"));
+      o.push(mk("Controcorrente","Unpopular opinion: "+core));
+      o.push(mk("Verità scomoda","Nessuno te lo dice, ma "+core));
+      o.push(mk("Ti riconosci","Non è colpa tua se "+core));
+      if(ci.kind==="why")o.push(mk("Curiosità","Ecco perché "+core+", e non è come pensi"));
+      o.push(mk("Sfida","Ti hanno sempre detto il contrario, ma "+core));
+    }else if(ci.kind==="how"){
+      if(ci.inf){
+        o.push(mk("Promessa","Come "+core+" senza fuffa"));
+        o.push(mk("Curiosità","Nessuno ti spiega come "+core));
+        o.push(mk("Promessa","Ecco come "+core+", passo per passo"));
+        o.push(mk("Curiosità","Se non sai come "+core+", parti da questo"));
+        o.push(mk("Controcorrente","Smetti di cercare scorciatoie: ecco come "+core));
+      }else{
+        o.push(mk("Storia","Come "+core));
+        o.push(mk("Curiosità","Nessuno ti spiega come "+core));
+        o.push(mk("Promessa","Ecco come "+core));
+      }
+    }else{
+      o.push(mk("Controcorrente",cap1(core)+": ecco cosa nessuno ti dice"));
+      o.push(mk("Paura di perdere",cap1(core)+": la maggior parte sbaglia da subito"));
+      o.push(mk("Curiosità",cap1(core)+": prima di andare avanti, guarda questo"));
+      if(!/^(il|lo|la|le|i|gli|l'|un|uno|una)\b/i.test(core))o.push(mk("Ti riconosci","L'errore che vedo sempre quando si tratta di "+core));
+      if(ci.inf)o.push(mk("Ti riconosci","Se "+core+" ti sembra complicato, parti da qui"));
+    }
+  }
+  var P=(S.pain||"").split(" · ")[0].trim().replace(/[.!?]+$/,"");
+  if(P){
+    o.push(mk("Ti riconosci","«"+cap1(P)+"». Te lo sei mai detto?"));
+    o.push(mk("Curiosità","Dici «"+P+"»? Allora ascolta"));
+    o.push(mk("Controcorrente","Finché dici «"+P+"», non cambierà niente"));
+    o.push(mk("Ti riconosci","Se pensi «"+P+"», questo video è per te"));
+  }
+  return o;
+}
+function scoreList(list,fmt){
+  var lim=(LIMITS[fmt]||LIMITS.talking).max,seen={},out=[];
+  list.forEach(function(x){
+    var k=x.t.toLowerCase();if(seen[k])return;seen[k]=1;
+    var a=analyze(x.t,fmt);
+    out.push({l:x.l,t:x.t,n:a.n,total:a.total,over:a.n>lim+3});
+  });
+  var ok=out.filter(function(x){return !x.over});
+  var res=(ok.length>=4?ok:out);
+  res.sort(function(a,b){return b.total-a.total});
+  /* varietà: prima un gancio per ogni tipo, poi gli altri */
+  var seenL={},first=[],rest=[];
+  res.forEach(function(x){if(!seenL[x.l]){seenL[x.l]=1;first.push(x)}else rest.push(x)});
+  return first.concat(rest);
+}
+function propose(){return scoreList(candidatesFromIdea(),S.formato)}
+function altsFor(text){
+  var s=text.trim().replace(/[.!?…]+$/,""),isQ=/\?\s*$/.test(text.trim()),o=[];
+  if(!s)return [];
+  var lim=(LIMITS[S.formato]||LIMITS.talking).max;
+  var mw=s.match(/^sai perch[eé]\s+(.+)$/i),mc=s.match(/^come\s+(.+)$/i);
+  var fp=/^(sto |ho |ero |sono |mi |faccio |vado |ti racconto|ieri|oggi|l'altro giorno|quando |stamattina|stanotte)/i.test(s);
+  if(words(s).length>lim)o.push(mk("Più corto",trimToLimit(text.trim(),lim).replace(/[.!?…]+$/,"")));
+  if(mw&&isQ){
+    var core=lc1(mw[1]);
+    o.push(mk("Controcorrente","Unpopular opinion: "+core));
+    o.push(mk("Verità scomoda","Nessuno te lo dice, ma "+core));
+    o.push(mk("Ti riconosci","Non è colpa tua se "+core));
+    o.push(mk("Sfida","Ti hanno sempre detto il contrario, ma "+core));
+  }else if(mc&&!isQ){
+    var cc=lc1(mc[1]);
+    o.push(mk("Curiosità","Nessuno ti spiega come "+cc));
+    o.push(mk("Promessa","Ecco come "+cc+", passo per passo"));
+    o.push(mk("Controcorrente","Smetti di cercare scorciatoie: ecco come "+cc));
+  }else if(fp){
+    var f1=(sentences(s)[0]||s).replace(/[.!?…]+$/,"");
+    o.push(mk("Storia",f1+"... e sai cosa è successo dopo?"));
+    o.push(mk("Curiosità","Non ci crederai: "+lc1(f1)));
+    o.push(mk("Storia",f1+". E non è finita qui"));
+  }else if(isQ){
+    o.push(mk("Curiosità",s+"? Non è come pensi"));
+    o.push(mk("Controcorrente","Smetti di chiederti questo: "+lc1(s)+"?"));
+  }else{
+    if(!/^unpopular/i.test(s))o.push(mk("Controcorrente","Unpopular opinion: "+lc1(s)));
+    o.push(mk("Verità scomoda","Nessuno te lo dice, ma "+lc1(s)));
+    o.push(mk("Sfida","Ti hanno sempre detto il contrario, ma "+lc1(s)));
+    o.push(mk("Curiosità",s+". Ma è davvero così?"));
+  }
+  var cur=analyze(text.trim(),S.formato).total;
+  var res=scoreList(o,S.formato).filter(function(x){return x.t.toLowerCase()!==text.trim().toLowerCase()});
+  return res.slice(0,5);
+}
+var propN=6;
+function renderProps(){
+  var list=propose(),box=$("props");
+  if(!list.length){box.innerHTML='<p class="vuoto-msg">Non riesco a ricavare proposte da questa idea: aggiungi qualche parola in più, oppure usa il messaggio per Claude qui sotto</p>';$("altre").style.display="none";$("altre-n").textContent="";return}
+  var h="";
+  list.slice(0,propN).forEach(function(x,i){
+    h+='<div class="gc"><span class="etich">'+esc(x.l)+'</span><div class="pv" style="border-color:var(--line)">'+esc(x.t)+'</div><div class="ct">'+x.n+' parole · voto '+x.total+'</div><div class="az"><button type="button" class="btn mini" data-p="'+i+'">Tieni questo</button></div></div>';
+  });
+  box.innerHTML=h;
+  var more=list.length>propN;
+  $("altre").style.display=more?"":"none";
+  $("altre-n").textContent=more?"":(list.length+" proposte in tutto: per altre, apri «Vuoi proposte ancora più creative?» qui sotto");
+  box._list=list;
+}
+$("props").addEventListener("click",function(e){
+  var b=e.target.closest("[data-p]");if(!b)return;
+  var x=$("props")._list[+b.dataset.p];addCand(x.t);toast("Aggiunto ai ganci che tieni");
+});
+$("altre").addEventListener("click",function(){propN+=4;renderProps()});
+
 /* ==================== PASSO 3 ==================== */
 function newCand(text,cat){return {id:"c"+Date.now().toString(36)+Math.floor(Math.random()*999),text:text,cat:cat||"",mod:"sint",scr:"",leva:S.leva}}
 function addCand(text,cat){S.cands.push(newCand(text,cat));save();$("tieni-n").textContent=S.cands.length+(S.cands.length===1?" gancio tenuto":" ganci tenuti")}
@@ -345,9 +454,9 @@ function prefill(name){
   return "";
 }
 function renderP3(){
+  propN=6;renderProps();
   var rec=recCats(),show=S.tutte?CATS.slice():rec.slice(0,6);
   if(S.focus){var fc=catByName(S.focus);if(fc){show=show.filter(function(x){return x!==fc});show.unshift(fc)}S.focus=""}
-  $("a-intro").textContent=S.tutte?"Tutte le formule":"Le formule che funzionano meglio per "+OB_LAB[S.obiettivo];
   $("piuCat").textContent=S.tutte?"Mostra solo le consigliate":"Mostra tutte le formule";
   var h="";
   show.forEach(function(c){
@@ -359,7 +468,6 @@ function renderP3(){
   $("gridA").innerHTML=h;
   document.querySelectorAll("#gridA .gc").forEach(function(el){updateSlots(el)});
   $("tieni-n").textContent=S.cands.length?S.cands.length+(S.cands.length===1?" gancio tenuto":" ganci tenuti"):"";
-  renderB();
 }
 function slotText(el){
   var c=CATS[+el.dataset.i],vals=[].map.call(el.querySelectorAll("input"),function(i){return i.value.trim()});
@@ -382,46 +490,6 @@ $("gridA").addEventListener("click",function(e){
   addCand(r.txt,CATS[+el.dataset.i].n);toast("Aggiunto ai ganci tenuti");
 });
 $("piuCat").addEventListener("click",function(){S.tutte=!S.tutte;save();renderP3()});
-document.querySelectorAll("#tabs3 button").forEach(function(b){b.addEventListener("click",function(){
-  document.querySelectorAll("#tabs3 button").forEach(function(x){x.classList.toggle("on",x===b)});
-  ["A","B","C"].forEach(function(k){$("tp"+k).classList.toggle("on",k===b.dataset.t)});
-})});
-
-/* banca */
-function renderBFilters(){
-  var h='<option value="">Tutti i tipi</option>';CATS.forEach(function(c){h+='<option value="'+esc(c.n)+'">'+esc(c.pt)+'</option>'});
-  $("bcat").innerHTML=h;
-}
-var bTutti=false;
-function relB(g){
-  var ctx=[S.idea,S.target,S.pain].join(" ").toLowerCase().split(/[^a-zàèéìòù']+/).filter(function(w){return w.length>=5});
-  var l=(g.x+" "+g.n).toLowerCase(),s=0;
-  ctx.forEach(function(w){if(l.indexOf(w)>-1)s+=2});
-  var lv=null;LEVE.forEach(function(x){if(x.k===S.leva)lv=x});
-  if(lv&&g.l===lv.lab)s+=2;
-  if(lv&&lv.cats.indexOf(g.c)>-1)s+=1;
-  if(g.v==="v")s+=1;
-  return s;
-}
-function renderB(){
-  var q=$("bq").value.trim().toLowerCase(),cat=$("bcat").value,tp=$("btipo").value,out="",n=0,tot=0;
-  var filtrato=!!(q||cat||tp);
-  var list=BANCA.map(function(g,i){return {g:g,i:i,s:relB(g)}}).sort(function(a,b){return b.s-a.s});
-  list.forEach(function(o){
-    var g=o.g,i=o.i;
-    if(cat&&g.c!==cat)return;if(tp&&g.v!==tp)return;if(q&&(g.x+" "+g.n+" "+g.c).toLowerCase().indexOf(q)===-1)return;
-    tot++;
-    if(!bTutti&&!filtrato&&n>=12)return;
-    n++;
-    out+='<div class="gc"><span class="etich '+(g.v==="v"?"":"sc")+'">'+(g.v==="v"?"Gancio vero di Gemma":"Esempio scritto da noi")+'</span><div class="pv" style="border-color:var(--line)">'+esc(g.x)+'</div><div class="ct">'+esc([g.c?(catByName(g.c)||{pt:g.c}).pt:"",g.l].filter(Boolean).join(" · "))+'</div><div class="qu">'+esc(g.n)+'</div><div class="az"><button type="button" class="btn mini" data-b="'+i+'">Parto da questo</button></div></div>';
-  });
-  $("gridB").innerHTML=out||'<p class="vuoto-msg">Nessun gancio con questi filtri</p>';
-  $("bn").textContent=(filtrato||bTutti?tot+" ganci":"I "+n+" più vicini alla tua idea, su "+tot)+" · «Gancio vero» lo ha usato Gemma nei suoi video, «Esempio scritto da noi» mostra la struttura";
-  $("bpiu").style.display=(filtrato||bTutti||tot<=12)?"none":"";
-}
-$("bpiu").addEventListener("click",function(){bTutti=true;renderB()});
-["bq"].forEach(function(id){$(id).addEventListener("input",renderB)});["bcat","btipo"].forEach(function(id){$(id).addEventListener("change",renderB)});
-$("gridB").addEventListener("click",function(e){var b=e.target.closest("[data-b]");if(!b)return;var g=BANCA[+b.dataset.b];addCand(g.x,g.c);toast("Aggiunto ai tuoi ganci: riscrivilo con le tue parole")});
 /* prompt */
 document.addEventListener("click",function(e){var b=e.target.closest("[data-cp]");if(b&&b.dataset.cp==="gen"){readP1();copyText(promptGen(),"Prompt copiato: incollalo in Claude o ChatGPT")}});
 $("pcorto").addEventListener("click",function(){S.full=false;save();$("pcorto").classList.add("on");$("pfull").classList.remove("on")});
@@ -458,26 +526,13 @@ function altHtml(c,a){
   if(a.tens<10)tips.push("Metti la cosa più sorprendente nelle prime 5 parole e lascia il contesto dopo");
   if(!a.leve.length)tips.push("Scegli perché qualcuno dovrebbe restare: una domanda lasciata aperta, una credenza sbagliata, una promessa concreta");
   if(a.n>a.lim.max)tips.push("Taglia fino a "+a.lim.max+" parole: togli le spiegazioni in coda");
-  if(!tips.length)tips.push("Ottimo. Ora leggilo ad alta voce, se suona scritto riscrivilo, e prova anche una versione più coraggiosa");
+  if(!tips.length)tips.push("Ottimo. Ora leggilo ad alta voce, se suona scritto riscrivilo");
   var h='<div class="sbh">Cosa fare adesso</div><ul class="tips">'+tips.map(function(x){return '<li>'+esc(x)+'</li>'}).join("")+'</ul>';
-  /* formule da provare */
-  var lv=null;LEVE.forEach(function(x){if(a.leve.length&&x.lab===a.leve[0])lv=x});
-  var pool=lv?CATS.filter(function(x){return lv.cats.indexOf(x.n)>-1}):recCats();
-  pool=pool.filter(function(x){return x.n!==a.cat&&x.g.indexOf(S.obiettivo)>-1});
-  if(pool.length<3)pool=pool.concat(recCats().filter(function(x){return x.n!==a.cat&&pool.indexOf(x)===-1}));
-  pool=pool.slice(0,3);
-  if(pool.length){
-    h+='<div class="sbh">Prova a riscriverlo con una di queste formule</div><div class="grid">';
-    pool.forEach(function(x){h+='<div class="gc"><span class="nm">'+esc(x.pt)+'</span><div class="fm">'+esc(x.f).replace(/\[(.*?)\]/g,"<em>[$1]</em>")+'</div><div class="es">Es: '+esc(x.e)+'</div><div class="az no-print"><button type="button" class="btn mini" data-a="fm" data-n="'+esc(x.n)+'">Prova questa formula</button></div></div>'});
-    h+='</div>';
-  }
-  /* ganci veri simili */
-  var tw=t.toLowerCase().split(/[^a-zàèéìòù']+/).filter(function(w){return w.length>=5});
-  var sim=BANCA.map(function(g,i){var s=0,l=g.x.toLowerCase();tw.forEach(function(w){if(l.indexOf(w)>-1)s+=2});if(a.leve.length&&g.l===a.leve[0])s+=3;if(a.cat&&g.c===a.cat)s+=2;if(g.v==="v")s+=1;return {g:g,i:i,s:s}}).filter(function(o){return o.g.x.toLowerCase()!==t.toLowerCase()&&o.s>1}).sort(function(x,y){return y.s-x.s}).slice(0,3);
-  if(sim.length){
-    h+='<div class="sbh">Ganci veri che usano la stessa leva, per ispirarti</div><div class="grid">';
-    sim.forEach(function(o){h+='<div class="gc"><span class="etich '+(o.g.v==="v"?"":"sc")+'">'+(o.g.v==="v"?"Gancio vero di Gemma":"Esempio scritto da noi")+'</span><div class="pv" style="border-color:var(--line)">'+esc(o.g.x)+'</div><div class="qu">'+esc(o.g.n)+'</div><div class="az no-print"><button type="button" class="btn mini" data-a="addb" data-i="'+o.i+'">Parto da questo</button></div></div>'});
-    h+='</div>';
+  var alts=altsFor(t);c._alts=alts;
+  if(alts.length){
+    h+='<div class="sbh">Altre versioni del tuo gancio</div><div class="grid">';
+    alts.forEach(function(o,j){h+='<div class="gc"><span class="etich">'+esc(o.l)+'</span><div class="pv" style="border-color:var(--line)">'+esc(o.t)+'</div><div class="ct">'+o.n+' parole · voto '+o.total+'</div><div class="az no-print"><button type="button" class="btn mini" data-a="addalt" data-j="'+j+'">Usa questa versione</button></div></div>'});
+    h+='</div><p class="hint no-print" style="margin-top:8px">Sono versioni automatiche del tuo gancio, da rifinire. Per versioni scritte da zero usa «Chiedi a Claude di migliorarlo»</p>';
   }
   return h;
 }
@@ -507,11 +562,11 @@ function updateCand(c){
   var col=a.vc==="ok"?"var(--ok)":a.vc==="warn"?"var(--warn)":"var(--bad)";
   vt.innerHTML='<div class="big">'+a.total+'<small>/100</small></div><span class="verd '+a.vc+'">'+a.verd+'</span><div class="meter"><i style="width:'+a.total+'%;background:'+col+'"></i></div>';
   var h='<div class="quali"><div>Segue il metodo '+a.rules+'/60</div><div>È concreto<div class="mb"><i style="width:'+Math.round(a.spec/12*100)+'%"></i></div></div><div>Ferma lo scroll<div class="mb"><i style="width:'+a.tens*10+'%"></i></div></div><div>Ha un perché<div class="mb"><i style="width:'+a.leva*10+'%"></i></div></div><div>Suona parlato<div class="mb"><i style="width:'+Math.round(a.parl/8*100)+'%"></i></div></div></div>';
-  h+='<div class="chips" style="margin-top:12px">'+(a.leve.length?'<span class="chip stat">Perché funziona: '+esc(a.leve.join(" + "))+'</span>':"")+(a.cat?'<span class="chip stat pk">Tipo di gancio: '+esc(a.cat)+'</span>':"")+'</div>';
+  h+='<div class="chips" style="margin-top:12px">'+(a.leve.length?'<span class="chip stat">Perché funziona: '+esc(a.leve.join(" + "))+'</span>':"")+""+'</div>';
   h+='<div class="dims">';
   Object.keys(DIMS).forEach(function(d){
     var s=dimSev(a.f,d),notes=a.f.filter(function(x){return x.dim===d}).map(function(x){return x.title});
-    var nt=notes.length?notes.join(" · "):({leva:a.leve.length?"Attiva: "+a.leve.join(", "):"Ok",struct:a.cat?"Riconosciuta: "+a.cat:"Ok",len:a.n+" parole, nel limite",talk:"Suona naturale",loop:"Lascia la curiosità aperta"})[d];
+    var nt=notes.length?notes.join(" · "):({leva:a.leve.length?"Attiva: "+a.leve.join(", "):"Ok",struct:"Ok",len:a.n+" parole, nel limite",talk:"Suona naturale",loop:"Lascia la curiosità aperta"})[d];
     h+='<div class="dim"><span class="dot '+s+'"></span><span class="nm">'+DIMS[d]+'</span><span class="nt">'+esc(nt)+'</span></div>';
   });
   h+='</div>';
@@ -543,8 +598,8 @@ $("cands").addEventListener("click",function(e){
   var mb=e.target.closest("[data-mod]");
   if(mb){var el0=mb.closest(".cand"),c0=candById(el0.dataset.id);c0.mod=mb.dataset.mod;c0.scr=scrDraft(c0);save();el0.querySelectorAll("[data-mod]").forEach(function(x){x.classList.toggle("on",x===mb)});el0.querySelector(".gs").value=c0.scr;el0.querySelector('[data-r=scnt]').textContent=words(c0.scr).length+" parole";renderFinale();return}
   var b=e.target.closest("[data-a]");if(!b)return;var el=b.closest(".cand"),c=candById(el.dataset.id),a=b.dataset.a;
-  if(a==="fm"){S.focus=b.dataset.n;save();go(3);document.querySelector('#tabs3 [data-t=A]').click();return}
-  if(a==="addb"){var gg=BANCA[+b.dataset.i];S.cands.push(newCand(gg.x,gg.c));save();renderCands();toast("Aggiunto: riscrivilo con le tue parole");return}
+  if(a==="fm"){S.focus=b.dataset.n;save();go(3);$("d-formule").open=true;return}
+  if(a==="addalt"){var al=c._alts[+b.dataset.j];S.cands.push(newCand(al.t));save();renderCands();toast("Aggiunto ai tuoi ganci");return}
   if(a==="fix"){var f=el.querySelector('[data-r=res]')._a.f[+b.dataset.i];var nv=f.fx(c.text.trim());c.text=nv;el.querySelector("textarea.gt").value=nv;save();updateCand(c);renderConfronto();renderFinale();toast("Correzione applicata")}
   else if(a==="fixall"){var t=c.text.trim(),n=0;for(var k=0;k<5;k++){var an=analyze(t,S.formato);var f2=an.f.filter(function(x){return x.fx&&x.fx(t).trim()&&x.fx(t)!==t})[0];if(!f2)break;t=f2.fx(t);n++}c.text=t;el.querySelector("textarea.gt").value=t;save();updateCand(c);renderConfronto();renderFinale();toast(n+" correzioni applicate")}
   else if(a==="rev"){copyText(promptFix(c),"Prompt copiato: incollalo in Claude o ChatGPT")}
@@ -560,8 +615,8 @@ function renderConfronto(){
   if(rows.length<2){box.style.display="none";if(rows.length)$("kitvoto").textContent=rows[0].a.total;return}
   box.style.display="";
   rows.sort(function(x,y){return y.a.total-x.a.total});
-  var h='<h3>Confronta i tuoi ganci</h3><div class="scroll-x" style="margin-top:10px"><table class="tab-conf"><thead><tr><th>Gancio</th><th>Voto</th><th>Parole</th><th>Tipo</th><th>Perché funziona</th></tr></thead><tbody>';
-  rows.forEach(function(r,i){h+='<tr><td>'+(i===0&&rows.length>1?'★ ':'')+esc(r.c.text.trim())+'</td><td><b>'+r.a.total+'</b><br>'+esc(r.a.verd)+'</td><td>'+r.a.n+'</td><td>'+esc(r.a.cat?(catByName(r.a.cat)||{pt:r.a.cat}).pt:"nessuna formula")+'</td><td>'+esc(r.a.leve.join(", ")||"nessuna")+'</td></tr>'});
+  var h='<h3>Confronta i tuoi ganci</h3><div class="scroll-x" style="margin-top:10px"><table class="tab-conf"><thead><tr><th>Gancio</th><th>Voto</th><th>Parole</th><th>Perché funziona</th></tr></thead><tbody>';
+  rows.forEach(function(r,i){h+='<tr><td>'+(i===0&&rows.length>1?'★ ':'')+esc(r.c.text.trim())+'</td><td><b>'+r.a.total+'</b><br>'+esc(r.a.verd)+'</td><td>'+r.a.n+'</td><td>'+esc(r.a.leve.join(", ")||"nessuna")+'</td></tr>'});
   h+='</tbody></table></div>';
   box.innerHTML=h;
   var top=rows[0];$("kitvoto").textContent=top.a.total;
@@ -570,7 +625,7 @@ function schedaTxt(){
   var o=[];
   S.cands.filter(function(c){return c.text.trim()}).forEach(function(c,i){
     var a=analyze(c.text.trim(),S.formato);
-    o.push("GANCIO "+(i+1)+"\nParlato: "+c.text.trim()+"\nA schermo: "+(c.scr||"da scrivere")+"\nTipo: "+(a.cat?(catByName(a.cat)||{pt:a.cat}).pt:"nessuna formula")+" · Perché funziona: "+(a.leve.join(", ")||"nessuno")+"\nVoto: "+a.total+"/100 ("+a.verd+") · "+a.n+" parole");
+    o.push("GANCIO "+(i+1)+"\nParlato: "+c.text.trim()+"\nA schermo: "+(c.scr||"da scrivere")+"\nPerché funziona: "+(a.leve.join(", ")||"nessuno")+"\nVoto: "+a.total+"/100 ("+a.verd+") · "+a.n+" parole");
   });
   var ctx=[];if(S.idea)ctx.push("Idea: "+S.idea);if(S.target)ctx.push("Per chi: "+S.target);if(S.pain)ctx.push("Parole di chi guarda: "+S.pain);ctx.push("Obiettivo: "+OB_LAB[S.obiettivo]+" · Formato: "+FMT_LAB[S.formato]);
   return "LA MIA SCHEDA GANCI\n"+ctx.join("\n")+"\n\n"+o.join("\n\n");
@@ -600,7 +655,7 @@ $("finale").addEventListener("click",function(e){
 })();
 
 /* ==================== AVVIO ==================== */
-renderSwipe();renderBFilters();fillP1();
+renderSwipe();fillP1();
 if(S.cands.length){$("tieni-n").textContent=S.cands.length+(S.cands.length===1?" gancio tenuto":" ganci tenuti")}
-window.__ganci={analyze:analyze,S:S,promptGen:promptGen,BANCA:BANCA,CATS:CATS};
+window.__ganci={analyze:analyze,S:S,promptGen:promptGen,CATS:CATS,propose:function(){return propose()},altsFor:altsFor,cleanIdea:cleanIdea};
 })();

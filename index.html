@@ -15,7 +15,7 @@
 <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/open-sauce-sans-900.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/stile.css?v=2">
-<link rel="stylesheet" href="assets/ganci.css?v=2">
+<link rel="stylesheet" href="assets/ganci.css?v=3">
 </head>
 <body>
 
@@ -93,36 +93,25 @@
     <!-- PASSO 2 -->
     <div class="panel" id="p3">
       <div class="card">
-        <h3>Scegli come aprire il video</h3>
-        <p class="aiuto" id="a-intro"></p>
-        <div class="tabs" id="tabs3">
-          <button type="button" data-t="A" class="on">Compila una formula<small>scegli una struttura e riempi i campi: il gancio si scrive da solo</small></button>
-          <button type="button" data-t="B">Ispirati a ganci veri<small>quelli che Gemma ha usato davvero: guarda come aprono, poi scrivi il tuo</small></button>
-          <button type="button" data-t="C">Fatti scrivere 10 ganci<small>un messaggio già pronto da incollare in Claude o ChatGPT</small></button>
+        <h3>Ecco le tue proposte di gancio</h3>
+        <p class="aiuto">Sono partite dalle parole della tua idea. Sono bozze: scegli quelle che ti piacciono con «Tieni questo», poi le rifinisci e le controlli al passo dopo</p>
+        <div class="grid" id="props" style="margin-top:14px"></div>
+        <div class="azioni">
+          <button class="btn btn-linea sm" id="altre" type="button">Altre proposte</button>
+          <span class="hint" id="altre-n"></span>
         </div>
 
-        <div class="tp on" id="tpA">
-          <p class="hint" style="margin:0 0 14px">Scegli una formula, riempi i campi e premi «Tieni questo». Le formule non inventano al posto tuo: per idee scritte da zero usa la terza scheda</p>
+        <details class="extra" id="d-formule"><summary>Preferisci costruirlo tu da una formula?</summary>
+          <p class="hint" style="margin:10px 0 14px">Scegli una struttura e riempi i campi: il gancio si scrive da solo</p>
           <div class="grid" id="gridA"></div>
           <p class="hint" style="margin-top:14px"><button class="chip" id="piuCat" type="button">Mostra tutte le formule</button></p>
-        </div>
+        </details>
 
-        <div class="tp" id="tpB">
-          <div class="filtri" style="margin-top:14px">
-            <input type="text" id="bq" placeholder="Cerca una parola (es: fuffa, follower, errore)" aria-label="Cerca nella banca">
-            <select id="bcat" aria-label="Tipo di gancio"></select>
-            <select id="btipo" aria-label="Quali ganci"><option value="">Tutti</option><option value="vero">Ganci veri</option><option value="scuola">Esempi di scuola</option></select>
-          </div>
-          <div class="grid" id="gridB"></div>
-          <p class="hint" id="bn" style="margin-top:12px"></p>
-          <p class="hint"><button class="chip" id="bpiu" type="button">Mostra tutti i ganci</button></p>
-        </div>
-
-        <div class="tp" id="tpC">
-          <p class="aiuto" style="margin:14px 0 6px">Copi un messaggio che contiene già la tua idea e il nostro metodo. Lo incolli in Claude o in ChatGPT, anche gratuiti, e ti risponde con 10 ganci. Poi torna qui e incolla i ganci che ti piacciono: ti dico il voto e come migliorarli</p>
+        <details class="extra" id="d-claude"><summary>Vuoi proposte ancora più creative?</summary>
+          <p class="aiuto" style="margin:10px 0 6px">Copi un messaggio che contiene già la tua idea e il nostro metodo. Lo incolli in Claude o in ChatGPT, anche gratuiti, e ti scrive 10 ganci da zero. Poi torna qui e incolla quelli che ti piacciono: ti dico il voto e come migliorarli</p>
           <div class="chips"><button class="chip on" id="pcorto" type="button">Messaggio corto</button><button class="chip" id="pfull" type="button">Messaggio completo, con più esempi</button></div>
           <div class="azioni"><button class="btn" type="button" data-cp="gen">Copia il messaggio</button><button class="btn btn-linea" id="c-ho" type="button">Ho i ganci, controllo il voto</button></div>
-        </div>
+        </details>
 
         <div class="azioni">
           <button class="btn" id="a3" type="button">Avanti, controlla il voto <span class="ar">&rarr;</span></button>
@@ -223,6 +212,6 @@
   </div>
 </footer>
 <div id="toast" role="status"></div>
-<script src="assets/ganci.js?v=2"></script>
+<script src="assets/ganci.js?v=3"></script>
 </body>
 </html>
