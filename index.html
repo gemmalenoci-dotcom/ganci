@@ -15,7 +15,7 @@
 <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/open-sauce-sans-900.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/stile.css?v=2">
-<link rel="stylesheet" href="assets/ganci.css?v=3">
+<link rel="stylesheet" href="assets/ganci.css?v=5">
 </head>
 <body>
 
@@ -37,7 +37,7 @@
       <div class="azioni">
         <button class="btn" id="vai-idea" type="button">Inizia <span class="ar">&darr;</span></button>
       </div>
-      <p class="fiducia">Gira nel tuo browser, non chiede email e non salva niente fuori da qui</p>
+      <p class="fiducia">Gira nel tuo browser, non chiede email e non salva niente: se chiudi la pagina i ganci spariscono, quindi copia la scheda</p>
     </div>
   </div>
 </section>
@@ -54,23 +54,23 @@
     <div class="panel on" id="p1">
       <div class="card">
         <h3>Da dove parti?</h3>
+        <p class="aiuto">Scegli la situazione in cui sei: cambia quello che ti chiediamo e quello che ricevi</p>
         <div class="modi" id="modi">
-          <button type="button" data-m="idea" class="on"><b>Ho un'idea per un video</b>Non ho ancora scritto niente: ti aiuto a trovare il gancio</button>
-          <button type="button" data-m="gancio"><b>Ho già scritto il gancio</b>Voglio sapere se funziona e come migliorarlo</button>
+          <button type="button" data-m="idea" class="on"><i class="tag">Strada blu</i><b>Ho l'idea del video, ma non il gancio</b>Sai di cosa vuoi parlare ma non sai come aprire. Scrivi l'idea e ti proponiamo dei ganci da usare</button>
+          <button type="button" data-m="gancio"><i class="tag">Strada fucsia</i><b>Ho già scritto il gancio</b>Hai la prima frase. La incolli e ti diamo il voto, come migliorarla e altre versioni da provare</button>
         </div>
 
         <div id="m-idea">
           <label class="fl" for="idea">Di cosa parla il video?</label>
-          <textarea id="idea" placeholder="Es: spiego perché le foto fatte col telefono non bastano per un ristorante"></textarea>
+          <textarea id="idea" placeholder="Es: voglio spiegare le tre novità di Instagram del mese"></textarea>
           <label class="fl" for="target">Per chi è? <span class="opt">(facoltativo)</span></label>
           <input type="text" id="target" placeholder="Es: ristoratori di provincia che curano da soli i social">
           <label class="fl" for="obiettivo">Cosa vuoi ottenere?</label>
           <select id="obiettivo"><option value="conoscere">Farmi conoscere da chi non mi segue</option><option value="fidelizzare">Farmi sentire capita da chi mi segue già</option><option value="vendere">Vendere un servizio o un prodotto</option></select>
-          <details class="extra"><summary>Vuoi un gancio ancora più tuo? <span class="opt">(facoltativo)</span></summary>
-            <label class="fl" for="pain">Cosa dice o pensa chi guarda, con le sue parole</label>
-            <input type="text" id="pain" placeholder="Es: pago un fotografo ma le foto non mi portano clienti">
-            <div class="chips" id="swipe" aria-label="Frasi vere di chi ti segue"></div>
-            <p class="hint" style="margin-top:8px">Sono frasi vere che ci scrivono: un clic e le aggiungi</p>
+          <details class="extra"><summary>Per proposte più tue, aggiungi una frase del tuo pubblico <span class="opt">(facoltativo)</span></summary>
+            <label class="fl" for="pain">Una frase che il tuo pubblico dice o pensa davvero</label>
+            <input type="text" id="pain" placeholder="Es: non so da dove cominciare">
+            <p class="hint" style="margin-top:8px">La uso dentro alcune proposte, tra virgolette. Se non la scrivi, le proposte partono solo dalla tua idea</p>
           </details>
         </div>
 
@@ -84,7 +84,7 @@
         <p class="hint" style="margin-top:6px">Cambia quante parole può avere il gancio</p>
 
         <div class="azioni">
-          <button class="btn" id="a1" type="button">Vedi le opzioni <span class="ar">&rarr;</span></button>
+          <button class="btn" id="a1" type="button">Vedi le proposte di gancio <span class="ar">&rarr;</span></button>
           <button class="btn" id="g1" type="button" style="display:none">Dammi il voto <span class="ar">&rarr;</span></button>
         </div>
       </div>
@@ -93,28 +93,33 @@
     <!-- PASSO 2 -->
     <div class="panel" id="p3">
       <div class="card">
-        <h3>Ecco le tue proposte di gancio</h3>
-        <p class="aiuto">Sono partite dalle parole della tua idea. Sono bozze: scegli quelle che ti piacciono con «Tieni questo», poi le rifinisci e le controlli al passo dopo</p>
+        <h3>Scegli il tuo gancio</h3>
+        <div class="istr"><b>Cosa devi fare:</b> premi «Tieni questo» sul gancio che ti piace (puoi tenerne anche più di uno), poi vai avanti. Sono bozze: al passo dopo le controlli e le rifinisci</div>
         <div class="grid" id="props" style="margin-top:14px"></div>
         <div class="azioni">
-          <button class="btn btn-linea sm" id="altre" type="button">Altre proposte</button>
+          <button class="btn btn-linea sm" id="altre" type="button">Mostrami altre proposte</button>
           <span class="hint" id="altre-n"></span>
         </div>
 
-        <details class="extra" id="d-formule"><summary>Preferisci costruirlo tu da una formula?</summary>
-          <p class="hint" style="margin:10px 0 14px">Scegli una struttura e riempi i campi: il gancio si scrive da solo</p>
-          <div class="grid" id="gridA"></div>
-          <p class="hint" style="margin-top:14px"><button class="chip" id="piuCat" type="button">Mostra tutte le formule</button></p>
-        </details>
+        <div class="altro">
+          <h4>Non ti convincono?</h4>
+          <details class="extra" id="d-formule"><summary>Costruiscilo tu partendo da una formula</summary>
+            <p class="hint" style="margin:10px 0 14px">Scegli una struttura, riempi i campi e il gancio si scrive da solo</p>
+            <div class="grid" id="gridA"></div>
+            <p class="hint" style="margin-top:14px"><button class="chip" id="piuCat" type="button">Mostra tutte le formule</button></p>
+          </details>
+          <details class="extra" id="d-claude"><summary>Fatti scrivere ganci nuovi da Claude o ChatGPT</summary>
+            <ol class="mini-passi">
+              <li>Copia il messaggio qui sotto: contiene già la tua idea e il nostro metodo</li>
+              <li>Incollalo in una chat con Claude o ChatGPT (vanno bene anche gratuiti) e premi invio: ti scrive 10 ganci</li>
+              <li>Torna qui, incolla il gancio che ti piace di più e ti dico il voto</li>
+            </ol>
+            <div class="azioni"><button class="btn btn-linea sm" type="button" data-cp="gen">Copia il messaggio</button><button class="btn btn-linea sm" id="c-ho" type="button">Ho il gancio di Claude, controllalo</button></div>
+          </details>
+        </div>
 
-        <details class="extra" id="d-claude"><summary>Vuoi proposte ancora più creative?</summary>
-          <p class="aiuto" style="margin:10px 0 6px">Copi un messaggio che contiene già la tua idea e il nostro metodo. Lo incolli in Claude o in ChatGPT, anche gratuiti, e ti scrive 10 ganci da zero. Poi torna qui e incolla quelli che ti piacciono: ti dico il voto e come migliorarli</p>
-          <div class="chips"><button class="chip on" id="pcorto" type="button">Messaggio corto</button><button class="chip" id="pfull" type="button">Messaggio completo, con più esempi</button></div>
-          <div class="azioni"><button class="btn" type="button" data-cp="gen">Copia il messaggio</button><button class="btn btn-linea" id="c-ho" type="button">Ho i ganci, controllo il voto</button></div>
-        </details>
-
-        <div class="azioni">
-          <button class="btn" id="a3" type="button">Avanti, controlla il voto <span class="ar">&rarr;</span></button>
+        <div class="azioni" style="margin-top:26px">
+          <button class="btn off" id="a3" type="button">Avanti, controlla il voto <span class="ar">&rarr;</span></button>
           <button class="btn btn-linea sm" id="i3" type="button">Indietro</button>
           <span class="hint" id="tieni-n"></span>
         </div>
@@ -208,10 +213,10 @@
 <footer>
   <div class="wrap">
     <p>Una risorsa di <a href="https://entra.unlikeacademy.it/?utm_source=ganci&amp;utm_medium=footer&amp;utm_campaign=ganci">Unlike Academy</a></p>
-    <p>I ganci che salvi restano solo in questo browser</p><p>© 2026 Unlike</p>
+    <p>Non salviamo niente: copia la scheda per tenere i tuoi ganci</p><p>© 2026 Unlike</p>
   </div>
 </footer>
 <div id="toast" role="status"></div>
-<script src="assets/ganci.js?v=3"></script>
+<script src="assets/ganci.js?v=8"></script>
 </body>
 </html>

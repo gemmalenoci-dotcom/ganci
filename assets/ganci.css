@@ -163,3 +163,42 @@ details.extra summary .opt{font-weight:600;color:var(--gray)}
 .gmod .chip span{font-size:12.5px;font-weight:600;color:var(--gray)}
 .gmod .chip.on span{color:#fff}
 .cand .grid{margin-top:8px}
+
+/* v4: colori delle due strade, bottoni, anteprima scritta */
+.modi button{border-width:2px}
+.modi button .tag{display:inline-block;font-style:normal;font-weight:800;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#fff;border-radius:4px;padding:3px 8px;margin-bottom:8px}
+.modi button[data-m=idea]{border-color:#227CC0}.modi button[data-m=idea] .tag{background:#227CC0}
+.modi button[data-m=idea].on{background:#E3EEF7;box-shadow:0 0 0 3px #227CC0}
+.modi button[data-m=gancio]{border-color:#CD2471}.modi button[data-m=gancio] .tag{background:#CD2471}
+.modi button[data-m=gancio].on{background:#FCEDF4;box-shadow:0 0 0 3px #CD2471}
+#strumento[data-modo=gancio]{--fucsia:#CD2471}
+#strumento[data-modo=gancio] .stepper button.on{border-color:#CD2471;background:#FCEDF4}
+#strumento[data-modo=gancio] .stepper button.on b{background:#CD2471}
+.istr{margin-top:12px;background:#FFF6DB;border:1.5px solid #E8C45A;border-radius:12px;padding:12px 14px;font-size:15px;color:var(--ink)}
+.altro{margin-top:26px;border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;background:var(--carta)}
+.altro h4{font-size:1.02rem;font-weight:900;color:var(--ink)}
+.mini-passi{margin:10px 0 0 20px}.mini-passi li{margin:6px 0;font-size:15px}
+.btn.off{opacity:.45}
+/* bottoni piccoli: contorno, non pieni */
+.gc .btn.mini,.cand .btn.mini{background:#fff;color:var(--fucsia);box-shadow:inset 0 0 0 2px var(--fucsia)}
+.gc .btn.mini:hover,.cand .btn.mini:hover{background:var(--azzurro);transform:none}
+.gc .btn.mini.tenuto{background:#2E8B57;color:#fff;box-shadow:none}
+.gc.tenuto-c{border-color:#2E8B57;box-shadow:0 0 0 2px rgba(46,139,87,.25)}
+/* scritta sullo schermo */
+.scr{display:grid;grid-template-columns:1fr 170px;gap:20px;align-items:start;margin-top:8px}
+.scr>*{min-width:0}
+.scr-opt{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin-top:6px}
+.scr-opt button{font-family:inherit;text-align:left;background:#fff;border:2px solid var(--line);border-radius:12px;padding:10px 12px;cursor:pointer;color:var(--ink);line-height:1.3}
+.scr-opt button b{display:block;font-size:14px}
+.scr-opt button i{display:block;font-style:normal;font-size:12.5px;color:var(--gray);margin-top:3px}
+.scr-opt button.on{border-color:var(--fucsia);background:var(--azzurro);box-shadow:0 0 0 2px var(--fucsia)}
+.mock{width:170px;aspect-ratio:9/16;background:linear-gradient(160deg,#3B3638,#1d1b1c);border-radius:18px;position:relative;overflow:hidden;box-shadow:var(--ombra-card);margin:0 auto}
+.mock .tx{position:absolute;left:10px;right:10px;top:26%;text-align:center;color:#fff;font-weight:900;font-size:15px;line-height:1.2;text-shadow:0 2px 8px rgba(0,0,0,.6);word-break:break-word}
+.mock .vo{position:absolute;left:10px;right:10px;bottom:14px;text-align:center;font-size:10px;color:rgba(255,255,255,.7)}
+.mock-cap{font-size:12.5px;color:var(--gray);text-align:center;margin-top:6px}
+.claude-box{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+.claude-box>div{border:1.5px solid var(--line);border-radius:14px;padding:14px;background:#fff}
+.claude-box b{display:block;color:var(--ink);font-size:15px}
+.claude-box p{font-size:14px;color:var(--gray);margin:4px 0 10px}
+.del{font-family:inherit;font-size:14px;font-weight:700;color:#C0392B;background:none;border:0;border-bottom:1.5px solid rgba(192,57,43,.4);cursor:pointer;padding:2px 0;margin-top:16px}
+@media (max-width:720px){.scr,.claude-box{grid-template-columns:1fr}.mock{width:150px}}
